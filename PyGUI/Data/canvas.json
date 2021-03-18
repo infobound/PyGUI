@@ -1,0 +1,164 @@
+{
+	"General": [
+		{
+			"Name": "Library",
+			"Type": "tk"
+		},
+		{
+			"Name": "Class",
+			"Type": "Button"
+		},
+		{
+			"Name": "Name",
+			"Type": "text",
+			"Default": "Labal"
+		}
+	],
+	"Attributes": [
+		{
+			"Name": "activebackground",
+			"Type": "color",
+			"Description": "Background color when the button is under the cursor."
+		},
+		{
+			"Name": "activeforeground",
+			"Type": "color",
+			"Description": "Foreground color when the button is under the cursor."
+		},
+		{
+			"Name": "highlightcolor",
+			"Type": "color",
+			"Description": "The color of the focus highlight when the widget has focus."
+		},
+		{
+			"Name": "bd",
+			"Type": "int",
+			"Min": 0,
+			"Description": "Border width in pixels. Default is 2."
+		},
+		{
+			"Name": "command",
+			"Type": "text",
+			"Description": "Function or method to be called when the button is clicked."
+		},
+		{
+			"Name": "fg",
+			"Type": "color",
+			"Description": "Normal foreground (text) color."
+		},
+		{
+			"Name": "font",
+			"Type": "font",
+			"Description": "Text font to be used for the button's label."
+		},
+		{
+			"Name": "image",
+			"Type": "file",
+			"Description": "Image to be displayed on the button (instead of text)."
+		},
+		{
+			"Name": "justify",
+			"Type": "file",
+			"Description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
+		},
+		{
+			"Name": "padx",
+			"Type": "int",
+			"Min": 0,
+			"Description": "Additional padding left and right of the text."
+		},
+		{
+			"Name": "pady",
+			"Type": "int",
+			"Min": 0,
+			"Description": "Additional padding above and below the text."
+		},
+		{
+			"Name": "relief",
+			"Type": "select",
+			"Description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
+			"Default": "flat",
+			"Options": [
+				{
+					"Text": "Sunken",
+					"Value": "sunken"
+				},
+				{
+					"Text": "Raised",
+					"Value": "raised"
+				},
+				{
+					"Text": "Flat",
+					"Value": "flat"
+				},
+				{
+					"Text": "Groove",
+					"Value": "groove"
+				},
+				{
+					"Text": "Ridge",
+					"Value": "ridge"
+				}
+			]
+		},
+		{
+			"Name": "state",
+			"Type": "select",
+			"Description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
+			"Default": "normal",
+			"Options": [
+				{
+					"Text": "Normal",
+					"Value": "normal"
+				},
+				{
+					"Text": "Active",
+					"Value": "active"
+				},
+				{
+					"Text": "Disabled",
+					"Value": "disabled"
+				}
+			]
+		},
+		{
+			"Name": "text",
+			"Type": "text",
+			"Default": "Label"
+		},
+		{
+			"Name": "underline",
+			"Type": "int",
+			"Min": -1,
+			"Description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
+		},
+		{
+			"Name": "wraplength",
+			"Type": "int",
+			"Min": 0,
+			"Description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
+		}
+	],
+	"Geometry": [
+		{
+			"Name": "Top",
+			"Type": "int",
+			"Min": 0
+		},
+		{
+			"Name": "Left",
+			"Type": "int",
+			"Min": 0
+		},
+		{
+			"Name": "Height",
+			"Type": "int",
+			"Min": 5
+		},
+		{
+			"Name": "Width",
+			"Type": "int",
+			"Min": 5
+		}
+	]
+}
