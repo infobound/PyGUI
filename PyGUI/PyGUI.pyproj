@@ -30,6 +30,10 @@
     <Compile Include="GUICode.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GUICode_IO.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GUICode_Toolbar.py" />
     <Compile Include="GUIForm.py">
       <SubType>Code</SubType>
     </Compile>

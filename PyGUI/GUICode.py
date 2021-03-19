@@ -1,14 +1,11 @@
 from tkinter import *
-from tkinter import filedialog as fd
 import json
 import Form
 import Child
 from PIL import Image, ImageTk
 from random import *
+import GUICode_Toolbar
 
-global _ToolSelected
-global _ToolbarContainer
-global _Tools
 global _MouseStartingX
 global _MouseStartingY
 global _MouseEndingX
@@ -32,77 +29,10 @@ _selected=[]
 _SelectionGrips=[]
 _designFrame=None
 
-def BuildToolsList(parentFrame):
-    global _ToolSelected
-    global _ToolbarContainer
-    global _Tools
 
-    _ToolbarContainer=parentFrame
-
-    try:
-        file = open("Data\\toolbar.json", "r")
-        data=file.read()
-        file.close()
-    except Exception as e:
-        print(e)
-        return
-
-    try:
-        _Tools=json.loads(data)
-    except Exception as e:
-        print(e)
-        return
-
-    def ToolButton_MouseButtonPress(event):
-        global _ToolSelected
-        ResetTollbarSelection(event.widget.cget('text'))
-        _ToolSelected=event.widget.cget('text')
-        return
-
-    #from tools file
-    lbl=Label(parentFrame)
-    lbl.configure(relief="raised")
-    lbl.configure(text="Toolbar",font="Arial 10 bold")
-    lbl.pack(side="top",fill="x")
-    for i in range(len(_Tools["Tools"])):
-        lbl=Label(parentFrame)
-        lbl.configure(relief="raised")
-        lbl.configure(text=_Tools["Tools"][i]["Group Name"])
-        lbl.pack(side="top",fill="x")
-        for j in range(len(_Tools["Tools"][i]["Buttons"])):
-            btn=Button(parentFrame)
-            btn.configure(relief="flat",background="white")
-            if _Tools["Tools"][i]["Buttons"][j]["Name"]=="Select": 
-                btn.configure(background="wheat3")
-                _ToolSelected="Select"
-            btn.bind("<ButtonPress>", ToolButton_MouseButtonPress)
-            btn.configure(width=20,height=1,text=_Tools["Tools"][i]["Buttons"][j]["Name"])
-            btn.pack(side="top",fill="x")
-
-            if "Properties" in _Tools["Tools"][i]["Buttons"][j]:
-                if _Tools["Tools"][i]["Buttons"][j]["Properties"].lower().endswith(".json")==True:
-                    try:
-                        file = open("Data\\"+_Tools["Tools"][i]["Buttons"][j]["Properties"], "r")
-                        data=file.read()
-                        file.close()
-                    except Exception as e:
-                        print(e)
-
-                    try:
-                        _Tools["Tools"][i]["Buttons"][j]["Properties"]=json.loads(data)
-                    except Exception as e:
-                        print(e)
-
-def ResetTollbarSelection(_text):
-    global _ToolSelected
-    global _ToolbarContainer
-    
-    _ToolSelected=_text
-    for i in _ToolbarContainer.children:
-        if _ToolbarContainer.children[i].cget("text")==_text:
-            _ToolbarContainer.children[i].configure(background="wheat3")
-        else:
-            _ToolbarContainer.children[i].configure(background="white")
+def UpdateForm(form):
+    global _form
+    _form=form
 
 def BuildForm(parentFrame,Form):
     global _form
@@ -137,13 +67,13 @@ def BuildForm(parentFrame,Form):
         _MouseEndingY=event.y
         designFormContainer.delete(_SelectionBox)
 
-        if _ToolSelected=="Select":
+        
+        if GUICode_Toolbar._ToolSelected=="Select":
             SelectControl()
         else:
             DrawControl()
 
-        _ToolSelected="Select"
-        ResetTollbarSelection(_ToolSelected)
+        GUICode_Toolbar.ResetTollbarSelection("Select")
 
         _MouseStartingX=-1
         _MouseStartingY=-1
@@ -223,12 +153,6 @@ def BuildForm(parentFrame,Form):
             _selected[i].bind("<ButtonRelease>", Selected_MouseButtonRelease)
             _selected[i].bind("<B1-Motion>", Selected_MouseMove)
 
-        if len(_selected)==1:
-            print("to do - show widget properties")
-        else:
-            print("to do - set properties window to selected controls and tools")
-
-        
     def Selected_MouseButtonPress(event):
         global _MouseStartingX
         global _MouseStartingY
@@ -441,22 +365,22 @@ def BuildForm(parentFrame,Form):
         if _width<15: _width=60
         if _height<15: _height=30
 
-        for i in range(len(_Tools["Tools"])):
-            for j in range(len(_Tools["Tools"][i]["Buttons"])):
-                if _ToolSelected==_Tools["Tools"][i]["Buttons"][j]["Name"]:
-                    _properties=_Tools["Tools"][i]["Buttons"][j]["Properties"]
+        for i in range(len(GUICode_Toolbar._Tools["Tools"])):
+            for j in range(len(GUICode_Toolbar._Tools["Tools"][i]["Buttons"])):
+                if GUICode_Toolbar._ToolSelected==GUICode_Toolbar._Tools["Tools"][i]["Buttons"][j]["Name"]:
+                    _properties=GUICode_Toolbar._Tools["Tools"][i]["Buttons"][j]["Properties"]
                     break
 
         print("to do - create control by library.class")
-        if _ToolSelected=="Button":
+        if GUICode_Toolbar._ToolSelected=="Button":
             control=Button(designFormContainer)
-        elif _ToolSelected=="Label":
+        elif GUICode_Toolbar._ToolSelected=="Label":
             control=Label(designFormContainer)
-        elif _ToolSelected=="Entry":
+        elif GUICode_Toolbar._ToolSelected=="Entry":
             control=Entry(designFormContainer)
-        elif _ToolSelected=="Frame":
+        elif GUICode_Toolbar._ToolSelected=="Frame":
             control=Frame(designFormContainer)
-        elif _ToolSelected=="Canvas":
+        elif GUICode_Toolbar._ToolSelected=="Canvas":
             control=Canvas(designFormContainer)
 
 
@@ -493,6 +417,8 @@ def BuildForm(parentFrame,Form):
 
     BuildTitleBar(designFormTitlebar)
     BuildControls(designFormContainer)
+
+    return designFormContainer
 
 def BuildTitleBar(parentFrame):
     global _form
@@ -552,107 +478,3 @@ def ShowSelectedList():
                 lbl.configure(text=_form.Children[j].Properties["name"])
                 lbl.pack()
 
-def SaveForm():
-    global _form
-
-    try:
-        _json='{ "Form": { '
-        _json+='"Properties": '
-        _json+=json.dumps(_form.Properties)
-        _json+=' ,'
-        _json+='"Children": ['
-        for child in _form.Children:
-            _json+='{ "Library": "'+child.Library+'",'
-            _json+='"Class": "'+child.Class+'",'
-            _json+='"Properties":'
-            _json+=json.dumps(child.Properties)
-            _json+='},'
-
-        _json=_json[:-1]
-        _json+=' ]'
-
-
-        _json+=' }'
-        _json+=' }'
-
-        file="Saves\\"+_form.Properties["name"]+".json"
-        f = open(file, "w")
-        f.write(_json)
-        f.close()
-    except Exception as ex:
-        print("Saved Failed")
-        print(ex)
-
-
-def LoadForm():
-    global _form
-    global _designFrame
-
-    filetypes = (
-        ('Form files', '*.json'),
-        ('All files', '*.*')
-    )
-
-    filename = fd.askopenfilename(
-        title='Open a file',
-        initialdir='Saves\\',
-        filetypes=filetypes)
-
-    try:
-        file = open(filename, "r")
-        data=file.read()
-        file.close()
-    except Exception as e:
-        print(e)
-        return
-
-    try:
-        _data=json.loads(data)
-    except Exception as e:
-        print(e)
-        return
-
-    _form=None
-    _form=Form.Form()
-    for child in _designFrame.winfo_children():
-        child.destroy()
-
-    _form.Properties=_data["Form"]["Properties"]
-
-    for dataChild in _data["Form"]["Children"]:
-        formChild=Child.Child()
-        formChild.Library=dataChild["Library"]
-        formChild.Class=dataChild["Class"]
-        formChild.Properties=dataChild["Properties"]
-        if "Children" in dataChild: formChild.Children=dataChild["Children"]
-        _form.Children.append(formChild)
-        LoadControl(formChild)
-        formChild=None
-
-def LoadControl(_child):
-    global _designFrame
-    global _form
-
-    print("to do - create control by library.class")
-    if _child.Class=="Button":
-        control=Button(_designFrame)
-    elif _child.Class=="Label":
-        control=Label(_designFrame)
-    elif _child.Class=="Entry":
-        control=Entry(_designFrame)
-    elif _child.Class=="Frame":
-        control=Frame(_designFrame)
-    elif _child.Class=="Canvas":
-        control=Canvas(_designFrame)
-
-    for key,val in _child.Properties.items():
-        if key!="x" and key!="y" and key!="width" and key!="height" and key!="name" and val!="":
-            control.configure({key:val})
-
-    _geo=[]
-    for key,val in _child.Properties.items():
-        if key=="x" or key=="y" or key=="width" or key=="height":
-            _geo.append({key:val})
-
-    control.place(_geo)
-    _child.Widget=control
