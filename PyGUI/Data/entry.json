@@ -1,17 +1,20 @@
 {
-	"General": [
+	"Base": [
 		{
 			"Name": "Library",
-			"Type": "tk"
+			"Type": "Label",
+			"Default": "tk"
 		},
 		{
 			"Name": "Class",
-			"Type": "Entry"
+			"Type": "Label",
+			"Default": "Entry"
 		},
 		{
 			"Name": "Name",
 			"Type": "text",
-			"Default": "Entry"
+			"Default": "Entry",
+			"Unique": "True"
 		}
 	],
 	"Attributes": [

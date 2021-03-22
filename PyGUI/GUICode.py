@@ -4,7 +4,8 @@ import Form
 import Child
 from PIL import Image, ImageTk
 from random import *
-import GUICode_Toolbar
+import GUICode_Toolbar as TB
+import GUICode_Properties as PROP
 
 global _MouseStartingX
 global _MouseStartingY
@@ -68,12 +69,12 @@ def BuildForm(parentFrame,Form):
         designFormContainer.delete(_SelectionBox)
 
         
-        if GUICode_Toolbar._ToolSelected=="Select":
+        if TB._ToolSelected=="Select":
             SelectControl()
         else:
             DrawControl()
 
-        GUICode_Toolbar.ResetTollbarSelection("Select")
+        TB.ResetTollbarSelection("Select")
 
         _MouseStartingX=-1
         _MouseStartingY=-1
@@ -129,15 +130,15 @@ def BuildForm(parentFrame,Form):
                             _selected.append(designFormContainer.children[i])
         
         if len(_selected)==0: 
-            ShowProperties(_form)
+            PROP.ShowFormProperties(_form)
             return
         elif len(_selected)==1:
             for i in range(len(_form.Children)):
                 if _form.Children[i].Widget==_selected[0]:
-                    ShowProperties(_form.Children[i])
+                    PROP.ShowWidgetProperties(_form.Children[i])
                     break
         else:
-            ShowSelectedList()
+            PROP.ShowSelectedList(_form,_selected)
         
         _selected[0].configure(cursor="tcross")
         _selected[0].bind("<ButtonPress>", Selected_MouseButtonPress)
@@ -365,37 +366,41 @@ def BuildForm(parentFrame,Form):
         if _width<15: _width=60
         if _height<15: _height=30
 
-        for i in range(len(GUICode_Toolbar._Tools["Tools"])):
-            for j in range(len(GUICode_Toolbar._Tools["Tools"][i]["Buttons"])):
-                if GUICode_Toolbar._ToolSelected==GUICode_Toolbar._Tools["Tools"][i]["Buttons"][j]["Name"]:
-                    _properties=GUICode_Toolbar._Tools["Tools"][i]["Buttons"][j]["Properties"]
+        for i in range(len(TB._Tools["Tools"])):
+            for j in range(len(TB._Tools["Tools"][i]["Buttons"])):
+                if TB._ToolSelected==TB._Tools["Tools"][i]["Buttons"][j]["Name"]:
+                    _properties=TB._Tools["Tools"][i]["Buttons"][j]["Properties"]
                     break
 
         print("to do - create control by library.class")
-        if GUICode_Toolbar._ToolSelected=="Button":
+        if TB._ToolSelected=="Button":
             control=Button(designFormContainer)
-        elif GUICode_Toolbar._ToolSelected=="Label":
+        elif TB._ToolSelected=="Label":
             control=Label(designFormContainer)
-        elif GUICode_Toolbar._ToolSelected=="Entry":
+        elif TB._ToolSelected=="Entry":
             control=Entry(designFormContainer)
-        elif GUICode_Toolbar._ToolSelected=="Frame":
+        elif TB._ToolSelected=="Frame":
             control=Frame(designFormContainer)
-        elif GUICode_Toolbar._ToolSelected=="Canvas":
+        elif TB._ToolSelected=="Canvas":
             control=Canvas(designFormContainer)
 
 
         _child=Child.Child()
         _child.Library="tk"
-        _child.Class=_ToolSelected
-        _child.Properties.update({"name": _properties["General"][2]["Default"]})
+        _child.Class=TB._ToolSelected
+        _child.Properties.update({"name": _properties["Base"][2]["Default"]})
 
         for i in range(len(_properties["Attributes"])):
-            if "Default" in _properties["Attributes"][i]:
-                _child.Properties.update({_properties["Attributes"][i]["Name"]: _properties["Attributes"][i]["Default"]})
-                control.configure({_properties["Attributes"][i]["Name"]: _properties["Attributes"][i]["Default"]})
-            else:
-                _child.Properties.update({_properties["Attributes"][i]["Name"]: ""})
-
+            try:
+                if "Default" in _properties["Attributes"][i]:
+                    _child.Properties.update({_properties["Attributes"][i]["Name"]: _properties["Attributes"][i]["Default"]})
+                    control.configure({_properties["Attributes"][i]["Name"]: _properties["Attributes"][i]["Default"]})
+                else:
+                    _child.Properties.update({_properties["Attributes"][i]["Name"]: ""})
+            except Exception as ex:
+                print("Unable to set property:")
+                print(_child.Library+"."+_child.Class+"."+_properties["Attributes"][i]["Name"])
+                print(ex.args)
 
         control.place(x=_left,y=_top,width=_width,height=_height)
         
@@ -452,29 +457,4 @@ def BuildControls(parentFrame):
 
     return
 
-def initPropertiesFrame(parent):
-    global _propertiesFrame
-    _propertiesFrame=parent
-
-def ShowProperties(obj):
-    global _propertiesFrame
-    for child in _propertiesFrame.winfo_children():
-        child.destroy()
-
-    for key, val in obj.Properties.items():
-        lbl=Label(_propertiesFrame)
-        lbl.configure(text=str(key)+": "+str(val))
-        lbl.pack()
-
-def ShowSelectedList():
-    global _propertiesFrame
-    for child in _propertiesFrame.winfo_children():
-        child.destroy()
-
-    for i in range(len(_selected)):
-        for j in range(len(_form.Children)):
-            if _form.Children[j].Widget==_selected[i]:
-                lbl=Label(_propertiesFrame)
-                lbl.configure(text=_form.Children[j].Properties["name"])
-                lbl.pack()
 

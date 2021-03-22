@@ -1,5 +1,5 @@
 {
-	"General": [
+	"Base": [
 		{
 			"Name": "Library",
 			"Type": "tk"
@@ -120,11 +120,6 @@
 					"Value": "disabled"
 				}
 			]
-		},
-		{
-			"Name": "text",
-			"Type": "text",
-			"Default": "Label"
 		},
 		{
 			"Name": "underline",

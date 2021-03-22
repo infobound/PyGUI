@@ -2,8 +2,9 @@ from tkinter import *
 import json
 import Form
 import GUICode
-import GUICode_IO
-import GUICode_Toolbar
+import GUICode_IO as IO
+import GUICode_Toolbar as TB
+import GUICode_Properties as PROP
 
 global _form
 global _propertiesFrame
@@ -25,7 +26,7 @@ def BuildInterface(window):
 
     def CallLoadForm():
         global _form
-        _form=GUICode_IO.LoadForm()
+        _form=IO.LoadForm()
         GUICode.UpdateForm(_form)
 
     #menu bar
@@ -33,7 +34,7 @@ def BuildInterface(window):
     filemenu = Menu(menubar, tearoff=0)
     filemenu.add_command(label="New", command=lambda: print("to do - Menu New"))
     filemenu.add_command(label="Open", command=lambda: CallLoadForm())
-    filemenu.add_command(label="Save", command=lambda: GUICode_IO.SaveForm())
+    filemenu.add_command(label="Save", command=lambda: IO.SaveForm())
     filemenu.add_command(label="Save as...", command=lambda: print("to do - Menu Save as"))
     filemenu.add_command(label="Export...", command=lambda: print("to do - Menu Export"))
     filemenu.add_separator()
@@ -56,8 +57,8 @@ def BuildInterface(window):
     window.config(menu=menubar)
 
     
-    GUICode_Toolbar.Init(window)
-    GUICode_Toolbar.BuildToolbar()
+    TB.Init(window)
+    TB.BuildToolbar()
 
 
 
@@ -68,7 +69,7 @@ def BuildInterface(window):
     design.configure(background="dim grey",relief="sunken",width=_windowWidth-150-200,padx=5,pady=5)
     design.pack(side="left", fill="both")
     _designFrame=GUICode.BuildForm(design,_form)
-    GUICode_IO.Init(_form,_designFrame)
+    IO.Init(_form,_designFrame)
 
     #properties window
     properties=Frame(window)
@@ -76,6 +77,7 @@ def BuildInterface(window):
     propertiesFrameScrollbar=Scrollbar(properties,orient="vertical",command=propertiesCanvas.yview)
     propertiesScrollableFrame=Frame(propertiesCanvas)
     _propertiesFrame=propertiesScrollableFrame
+    #onemore=Frame(propertiesScrollableFrame)
 
     propertiesScrollableFrame.bind(
         "<Configure>",
@@ -87,18 +89,16 @@ def BuildInterface(window):
     propertiesCanvas.create_window((0, 0), window=propertiesScrollableFrame, anchor="nw")
     propertiesCanvas.config(yscrollcommand=propertiesFrameScrollbar.set)
 
-    GUICode.initPropertiesFrame(propertiesScrollableFrame)
-    GUICode.ShowProperties(_form)
-
     properties.configure(relief="raised")
     propertiesCanvas.configure(width=150)
     
     properties.pack(side="left", fill="both")
     propertiesCanvas.pack(side="left", fill="y")
     propertiesFrameScrollbar.pack(side="right", fill="y")
-    propertiesScrollableFrame.pack()
+    propertiesScrollableFrame.pack(side="top",fill="both")
 
-
+    PROP.Init(propertiesScrollableFrame)
+    PROP.ShowFormProperties(_form)
 
 
 

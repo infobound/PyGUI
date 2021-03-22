@@ -1,7 +1,7 @@
 {
 	"Tools": [
 		{
-			"Group Name": "General",
+			"Group Name": "tkinter",
 			"Buttons": [
 				{
 					"Name": "Select",

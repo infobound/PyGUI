@@ -33,6 +33,7 @@
     <Compile Include="GUICode_IO.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GUICode_Properties.py" />
     <Compile Include="GUICode_Toolbar.py" />
     <Compile Include="GUIForm.py">
       <SubType>Code</SubType>
@@ -42,6 +43,7 @@
   <ItemGroup>
     <Content Include="Data\canvas.json" />
     <Content Include="Data\entry.json" />
+    <Content Include="Data\form.json" />
     <Content Include="Data\frame.json" />
     <Content Include="Data\label.json" />
     <Content Include="Data\button.json" />

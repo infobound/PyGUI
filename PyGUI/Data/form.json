@@ -2,16 +2,36 @@
 	"Base": [
 		{
 			"Name": "Library",
-			"Type": "tk"
+			"Type": "label",
+			"Default": "tkinter"
 		},
 		{
 			"Name": "Class",
-			"Type": "Button"
+			"Type": "label",
+			"Default": "Tk"
 		},
 		{
 			"Name": "Name",
 			"Type": "text",
-			"Default": "Labal"
+			"Default": "New_Form"
+		},
+		{
+			"Name": "Placement Mode",
+			"Type": "Select",
+			"Options": [
+				{
+					"Text": "Place",
+					"Value": "place"
+				},
+				{
+					"Text": "Pack",
+					"Value": "Pack"
+				},
+				{
+					"Text": "Grid",
+					"Value": "grid"
+				}
+			]
 		}
 	],
 	"Attributes": [
@@ -54,12 +74,7 @@
 		{
 			"Name": "image",
 			"Type": "file",
-			"Description": "Image to be displayed on the button (instead of text)."
-		},
-		{
-			"Name": "justify",
-			"Type": "file",
-			"Description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
+			"Description": "Image to be displayed."
 		},
 		{
 			"Name": "padx",
@@ -74,72 +89,35 @@
 			"Description": "Additional padding above and below the text."
 		},
 		{
-			"Name": "relief",
-			"Type": "select",
-			"Description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
-			"Default": "flat",
-			"Options": [
-				{
-					"Text": "Sunken",
-					"Value": "sunken"
-				},
-				{
-					"Text": "Raised",
-					"Value": "raised"
-				},
-				{
-					"Text": "Flat",
-					"Value": "flat"
-				},
-				{
-					"Text": "Groove",
-					"Value": "groove"
-				},
-				{
-					"Text": "Ridge",
-					"Value": "ridge"
-				}
-			]
-		},
-		{
 			"Name": "text",
 			"Type": "text",
-			"Default": "Frame",
-			"Description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
-		},
-		{
-			"Name": "underline",
-			"Type": "int",
-			"Min": -1,
-			"Description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
-		},
-		{
-			"Name": "wraplength",
-			"Type": "int",
-			"Min": 0,
-			"Description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
+			"Default": "New Form"
 		}
 	],
 	"Geometry": [
 		{
 			"Name": "Top",
 			"Type": "int",
-			"Min": 0
+			"Min": 0,
+			"Default": 0
 		},
 		{
 			"Name": "Left",
 			"Type": "int",
-			"Min": 0
+			"Min": 0,
+			"Default": 0
 		},
 		{
 			"Name": "Height",
 			"Type": "int",
-			"Min": 5
+			"Min": 50,
+			"Default": 500
 		},
 		{
 			"Name": "Width",
 			"Type": "int",
-			"Min": 5
+			"Min": 50,
+			"Default": 500
 		}
 	]
 }
