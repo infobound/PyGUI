@@ -38,6 +38,9 @@
     <Compile Include="GUIForm.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Properties.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PyGUI.pyw" />
   </ItemGroup>
   <ItemGroup>

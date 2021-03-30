@@ -28,6 +28,7 @@ def ShowFormProperties(obj):
     lbl.configure(relief="raised")
     lbl.configure(text="Properties",font="Arial 10 bold")
     lbl.grid(columnspan=2,row=rowCnt,sticky="we")
+
     for key, val in obj.Properties.items():
         rowCnt+=1
         _props.append(StringVar(fra, value=val))
@@ -58,11 +59,11 @@ def ShowWidgetProperties(obj):
     lbl.configure(relief="raised")
     lbl.configure(text="Properties",font="Arial 10 bold")
     lbl.grid(columnspan=2,row=rowCnt,sticky="we")
-    for i in range(len(TB._Tools["Tools"])): # this is going through the tool groups at this level
-        for j in range(len(TB._Tools["Tools"][i]["Buttons"])): #this is looking at each tool
-            if "Properties" in TB._Tools["Tools"][i]["Buttons"][j]:
-                toolProp=TB._Tools["Tools"][i]["Buttons"][j]["Properties"]
-                if "Base" in toolProp and toolProp["Base"][0]["Type"]==obj.Library and toolProp["Base"][1]["Type"]==obj.Class:
+    for group,tools in TB._Tools["Toolbar"].items(): # this is going through the tool groups at this level
+        for tool,settings in tools.items(): #this is looking at each tool
+            if "Properties" in settings:
+                toolProp=settings["Properties"]
+                if "Base" in toolProp and toolProp["Base"]["library"]==obj.Library and toolProp["Base"][1]["Type"]==obj.Class:
                     #base
                     rowCnt+=1
                     lbl=Label(fra)
@@ -72,7 +73,7 @@ def ShowWidgetProperties(obj):
 
                     rowCnt+=1
                     lbl=Label(fra)
-                    lbl.configure(text="Library")
+                    lbl.configure(text="library")
                     lbl.grid(column=0,sticky="w",row=rowCnt)
 
                     lbl=Label(fra)
@@ -81,7 +82,7 @@ def ShowWidgetProperties(obj):
 
                     rowCnt+=1
                     lbl=Label(fra)
-                    lbl.configure(text="Class")
+                    lbl.configure(text="class")
                     lbl.grid(column=0,sticky="w",row=rowCnt)
 
                     lbl=Label(fra)
@@ -90,7 +91,7 @@ def ShowWidgetProperties(obj):
 
                     rowCnt+=1
                     lbl=Label(fra)
-                    lbl.configure(text="Name")
+                    lbl.configure(text="name")
                     lbl.grid(column=0,sticky="w",row=rowCnt)
 
                     lbl=Label(fra)
@@ -150,11 +151,11 @@ def ShowWidgetProperties(obj):
                     for prop in toolProp["Attributes"]:
                         rowCnt+=1
                         lbl=Label(fra)
-                        lbl.configure(text=prop["Name"])
+                        lbl.configure(text=prop["name"])
                         lbl.grid(column=0,sticky="w",row=rowCnt)
 
                         lbl=Label(fra)
-                        lbl.configure(text=obj.Properties[prop["Name"]])
+                        lbl.configure(text=obj.Properties[prop["name"]])
                         lbl.grid(column=1,sticky="w",row=rowCnt)
 
                     return

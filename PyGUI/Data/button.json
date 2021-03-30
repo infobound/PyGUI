@@ -1,80 +1,70 @@
 {
-	"Base": [
-		{
-			"Name": "Library",
-			"Type": "tk"
+	"base": {
+			"library": "tk",
+			"class": "Button",
+			"name": "Button"
 		},
+	"attributes": [
 		{
-			"Name": "Class",
-			"Type": "Button"
-		},
-		{
-			"Name": "Name",
-			"Type": "text",
-			"Default": "Button"
-		}
-	],
-	"Attributes": [
-		{
-			"Name": "activebackground",
+			"name": "activebackground",
 			"Type": "color",
 			"Description": "Background color when the button is under the cursor."
 		},
 		{
-			"Name": "activeforeground",
+			"name": "activeforeground",
 			"Type": "color",
 			"Description": "Foreground color when the button is under the cursor."
 		},
 		{
-			"Name": "highlightcolor",
+			"name": "highlightcolor",
 			"Type": "color",
 			"Description": "The color of the focus highlight when the widget has focus."
 		},
 		{
-			"Name": "bd",
+			"name": "bd",
 			"Type": "int",
 			"Min": 0,
 			"Description": "Border width in pixels. Default is 2."
 		},
 		{
-			"Name": "command",
+			"name": "command",
 			"Type": "text",
 			"Description": "Function or method to be called when the button is clicked."
 		},
 		{
-			"Name": "fg",
+			"name": "fg",
 			"Type": "color",
 			"Description": "Normal foreground (text) color."
 		},
 		{
-			"Name": "font",
+			"name": "font",
 			"Type": "font",
 			"Description": "Text font to be used for the button's label."
 		},
 		{
-			"Name": "image",
+			"name": "image",
 			"Type": "file",
 			"Description": "Image to be displayed on the button (instead of text)."
 		},
 		{
-			"Name": "justify",
+			"name": "justify",
 			"Type": "file",
 			"Description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
 		},
 		{
-			"Name": "padx",
+			"name": "padx",
 			"Type": "int",
 			"Min": 0,
 			"Description": "Additional padding left and right of the text."
 		},
 		{
-			"Name": "pady",
+			"name": "pady",
 			"Type": "int",
 			"Min": 0,
 			"Description": "Additional padding above and below the text."
 		},
 		{
-			"Name": "relief",
+			"name": "relief",
 			"Type": "select",
 			"Description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
 			"Default": "raised",
@@ -102,7 +92,7 @@
 			]
 		},
 		{
-			"Name": "state",
+			"name": "state",
 			"Type": "select",
 			"Description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
 			"Default": "normal",
@@ -122,41 +112,41 @@
 			]
 		},
 		{
-			"Name": "text",
+			"name": "text",
 			"Type": "text",
 			"Default": "Button"
 		},
 		{
-			"Name": "underline",
+			"name": "underline",
 			"Type": "int",
 			"Min": -1,
 			"Description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
 		},
 		{
-			"Name": "wraplength",
+			"name": "wraplength",
 			"Type": "int",
 			"Min": 0,
 			"Description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
 		}
 	],
-	"Geometry": [
+	"geometry": [
 		{
-			"Name": "Top",
+			"name": "y",
 			"Type": "int",
 			"Min": 0
 		},
 		{
-			"Name": "Left",
+			"name": "x",
 			"Type": "int",
 			"Min": 0
 		},
 		{
-			"Name": "Height",
+			"name": "height",
 			"Type": "int",
 			"Min": 5
 		},
 		{
-			"Name": "Width",
+			"name": "width",
 			"Type": "int",
 			"Min": 5
 		}

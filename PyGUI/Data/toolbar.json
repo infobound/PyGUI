@@ -1,49 +1,124 @@
 {
-	"Tools": [
-		{
-			"Group Name": "tkinter",
-			"Buttons": [
-				{
-					"Name": "Select",
-					"Icon": ""
-				},
-				{
-					"Name": "Button",
-					"Icon": "",
-					"Properties": "button.json"
-				},
-				{
-					"Name": "Label",
-					"Icon": "",
-					"Properties": "label.json"
-				},
-				{
-					"Name": "Entry",
-					"Icon": "",
-					"Properties": "entry.json"
-				},
-				{
-					"Name": "Frame",
-					"Icon": "",
-					"Properties": "frame.json"
-				},
-				{
-					"Name": "Canvas",
-					"Icon": "",
-					"Properties": "canvas.json"
-				}
-			]
+	"Toolbar": {
+		"tkinter": {
+			"Select": "",
+			"Button": {
+				"Properties": "button.json"
+			},
+			"Label": {
+				"Properties": "label.json"
+			},
+			"Entry": {
+				"Properties": "entry.json"
+			},
+			"Frame": {
+				"Properties": "frame.json"
+			},
+			"Canvas": {
+				"Properties": "canvas.json"
+			}
 		},
-		{
-			"Group Name": "Special",
-			"Buttons": [
-				{
-					"Name": "Scrollable Frame",
-					"Icon": "",
-					"Properties": "",
-					"Script": ""
-				}
-			]
+		"Special": {
+			"Scrollable Frame": {
+				"Properties": {
+					"Base": {
+						"library": {
+							"Type": "label",
+							"Default": "Special"
+						},
+						"class": {
+							"Type": "label",
+							"Default": "Special"
+						},
+						"name": {
+							"Type": "text",
+							"Default": "ScrollableFrame"
+						},
+						"Placement Manager": {
+							"Type": "Select",
+							"Options": {
+								"Place": "place",
+								"Pack": "pack",
+								"Grid": "grid"
+							},
+							"Default": "pack"
+						}
+					},
+					"Attributes": {
+						"activebackground": {
+							"Type": "color",
+							"Description": "Background color when the button is under the cursor."
+						},
+						"activeforeground": {
+							"Type": "color",
+							"Description": "Foreground color when the button is under the cursor."
+						},
+						"highlightcolor": {
+							"Type": "color",
+							"Description": "The color of the focus highlight when the widget has focus."
+						},
+						"bd": {
+							"Type": "int",
+							"Min": 0,
+							"Description": "Border width in pixels. Default is 2."
+						},
+						"command": {
+							"Type": "text",
+							"Description": "Function or method to be called when the button is clicked."
+						},
+						"fg": {
+							"Type": "color",
+							"Description": "Normal foreground (text) color."
+						},
+						"font": {
+							"Type": "font",
+							"Description": "Text font to be used for the button's label."
+						},
+						"image": {
+							"Type": "file",
+							"Description": "Image to be displayed."
+						},
+						"padx": {
+							"Type": "int",
+							"Min": 0,
+							"Description": "Additional padding left and right of the text."
+						},
+						"pady": {
+							"Type": "int",
+							"Min": 0,
+							"Description": "Additional padding above and below the text."
+						},
+						"text": {
+							"Type": "text",
+							"Default": "New Form"
+						}
+					},
+					"Geometry": {
+						"y": {
+							"Type": "int",
+							"Min": 0,
+							"Default": 0
+						},
+						"x": {
+							"Type": "int",
+							"Min": 0,
+							"Default": 0
+						},
+						"Height": {
+							"Type": "int",
+							"Min": 50,
+							"Default": 500
+						},
+						"Width": {
+							"Type": "int",
+							"Min": 50,
+							"Default": 500
+						}
+					}
+				},
+				"Script": ""
+			}
 		}
-	]
- }
+	}
+}
+

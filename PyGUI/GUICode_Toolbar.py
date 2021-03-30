@@ -1,5 +1,6 @@
 from tkinter import *
 import json
+import GUICode_IO as io
 
 global _window
 global _ToolSelected
@@ -15,7 +16,7 @@ def Init(window):
     _window=window
     _ToolSelected=None
     _ToolbarContainer=None
-    _Tools=[]
+    _Tools=None
 
 def BuildToolbar():
     global _window
@@ -70,51 +71,54 @@ def BuildToolsList():
         _ToolSelected=event.widget.cget('text')
         ResetTollbarSelection(_ToolSelected)
 
-    try:
-        file = open("Data\\toolbar.json", "r")
-        data=file.read()
-        file.close()
-    except Exception as e:
-        print(e)
-        return
-
-    try:
-        _Tools=json.loads(data)
-    except Exception as e:
-        print(e)
-        return
+    _Tools=io.LoadFile("Data\\toolbar.json")
 
     #from tools file
     lbl=Label(_ToolbarContainer)
     lbl.configure(relief="raised")
     lbl.configure(text="Toolbar",font="Arial 10 bold")
     lbl.pack(side="top",fill="x")
-    for i in range(len(_Tools["Tools"])):
+    for group,tools in _Tools["Toolbar"].items():
         lbl=Label(_ToolbarContainer)
         lbl.configure(relief="raised")
-        lbl.configure(text=_Tools["Tools"][i]["Group Name"])
+        lbl.configure(text=group)
         lbl.pack(side="top",fill="x")
-        for j in range(len(_Tools["Tools"][i]["Buttons"])):
+        for tool,settings in tools.items():
             btn=Button(_ToolbarContainer)
             btn.configure(relief="flat",background="white")
-            if _Tools["Tools"][i]["Buttons"][j]["Name"]=="Select": 
+            if tool=="Select": 
                 btn.configure(background="wheat3")
                 _ToolSelected="Select"
             btn.bind("<ButtonPress>", ToolButton_MouseButtonPress)
-            btn.configure(width=20,height=1,text=_Tools["Tools"][i]["Buttons"][j]["Name"])
+            btn.configure(width=20,height=1,text=tool)
             btn.pack(side="top",fill="x")
 
-            if "Properties" in _Tools["Tools"][i]["Buttons"][j]:
-                if _Tools["Tools"][i]["Buttons"][j]["Properties"].lower().endswith(".json")==True:
-                    try:
-                        file = open("Data\\"+_Tools["Tools"][i]["Buttons"][j]["Properties"], "r")
-                        data=file.read()
-                        file.close()
-                    except Exception as e:
-                        print(e)
+            if "Properties" in settings:
+                if type(settings["Properties"]) is dict:
+                    #nothing to do
+                    break
+                elif settings["Properties"].lower().endswith(".json")==True:
+                    settings["Properties"]=io.LoadFile("Data\\"+settings["Properties"])
 
-                    try:
-                        _Tools["Tools"][i]["Buttons"][j]["Properties"]=json.loads(data)
-                    except Exception as e:
-                        print(e)
+    #lbl=Label(_ToolbarContainer)
+    #lbl.configure(relief="raised")
+    #lbl.configure(text="Toolbar",font="Arial 10 bold")
+    #lbl.pack(side="top",fill="x")
+    #for i in range(len(_Tools["Toolbar"])):
+    #    lbl=Label(_ToolbarContainer)
+    #    lbl.configure(relief="raised")
+    #    lbl.configure(text=_Tools["Toolbar"][i]["Group name"])
+    #    lbl.pack(side="top",fill="x")
+    #    for j in range(len(_Tools["Toolbar"][i]["Tools"])):
+    #        btn=Button(_ToolbarContainer)
+    #        btn.configure(relief="flat",background="white")
+    #        if _Tools["Toolbar"][i]["Tools"][j]["name"]=="Select": 
+    #            btn.configure(background="wheat3")
+    #            _ToolSelected="Select"
+    #        btn.bind("<ButtonPress>", ToolButton_MouseButtonPress)
+    #        btn.configure(width=20,height=1,text=_Tools["Toolbar"][i]["Tools"][j]["name"])
+    #        btn.pack(side="top",fill="x")
 
+    #        if "Properties" in _Tools["Toolbar"][i]["Tools"][j]:
+    #            if _Tools["Toolbar"][i]["Tools"][j]["Properties"].lower().endswith(".json")==True:
+    #                _Tools["Toolbar"][i]["Tools"][j]["Properties"]=io.LoadFile("Data\\"+_Tools["Toolbar"][i]["Tools"][j]["Properties"])

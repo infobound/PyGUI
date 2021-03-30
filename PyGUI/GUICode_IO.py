@@ -24,8 +24,8 @@ def SaveForm():
         _json+=' ,'
         _json+='"Children": ['
         for child in _form.Children:
-            _json+='{ "Library": "'+child.Library+'",'
-            _json+='"Class": "'+child.Class+'",'
+            _json+='{ "library": "'+child.library+'",'
+            _json+='"class": "'+child.Class+'",'
             _json+='"Properties":'
             _json+=json.dumps(child.Properties)
             _json+='},'
@@ -83,8 +83,8 @@ def LoadForm():
 
     for dataChild in _data["Form"]["Children"]:
         formChild=Child.Child()
-        formChild.Library=dataChild["Library"]
-        formChild.Class=dataChild["Class"]
+        formChild.Library=dataChild["library"]
+        formChild.Class=dataChild["class"]
         formChild.Properties=dataChild["Properties"]
         if "Children" in dataChild: formChild.Children=dataChild["Children"]
         _form.Children.append(formChild)
@@ -121,3 +121,39 @@ def LoadControl(_child):
     control.place(_geo)
     _child.Widget=control
 
+def LoadProperties():
+    #the code to get properties from the toolbar class has become ugly.  This is the start
+    #of refactoring those properties into a more conscise class
+
+    try:
+        file = open("Data\\form.json", "r")
+        data=file.read()
+        file.close()
+    except Exception as e:
+        print(e)
+        return
+
+    try:
+        _data=json.loads(data)
+    except Exception as e:
+        print(e)
+        return
+
+    return _data
+
+def LoadFile(FilePath):
+    try:
+        file = open(FilePath, "r")
+        rawdata=file.read()
+        file.close()
+    except Exception as e:
+        print(e)
+        return
+
+    try:
+        formatteddata=json.loads(rawdata)
+    except Exception as e:
+        print(e)
+        return
+
+    return formatteddata

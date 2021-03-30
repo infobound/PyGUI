@@ -366,11 +366,18 @@ def BuildForm(parentFrame,Form):
         if _width<15: _width=60
         if _height<15: _height=30
 
-        for i in range(len(TB._Tools["Tools"])):
-            for j in range(len(TB._Tools["Tools"][i]["Buttons"])):
-                if TB._ToolSelected==TB._Tools["Tools"][i]["Buttons"][j]["Name"]:
-                    _properties=TB._Tools["Tools"][i]["Buttons"][j]["Properties"]
+        for group,tools in TB._Tools["Toolbar"].items():
+            for tool,settings in tools.items():
+                if TB._ToolSelected==tool:
+                    _properties=settings["Properties"]
                     break
+
+
+        #for i in range(TB._Tools["Tools"].len()):
+        #    for j in range(len(TB._Tools["Tools"][i]["Buttons"])):
+        #        if TB._ToolSelected==TB._Tools["Tools"][i]["Buttons"][j]["name"]:
+        #            _properties=TB._Tools["Tools"][i]["Buttons"][j]["Properties"]
+        #            break
 
         print("to do - create control by library.class")
         if TB._ToolSelected=="Button":
@@ -388,18 +395,18 @@ def BuildForm(parentFrame,Form):
         _child=Child.Child()
         _child.Library="tk"
         _child.Class=TB._ToolSelected
-        _child.Properties.update({"name": _properties["Base"][2]["Default"]})
+        _child.Properties.update({"name": _properties["base"]["name"]})
 
-        for i in range(len(_properties["Attributes"])):
+        for i in range(len(_properties["attributes"])):
             try:
-                if "Default" in _properties["Attributes"][i]:
-                    _child.Properties.update({_properties["Attributes"][i]["Name"]: _properties["Attributes"][i]["Default"]})
-                    control.configure({_properties["Attributes"][i]["Name"]: _properties["Attributes"][i]["Default"]})
+                if "Default" in _properties["attributes"][i]:
+                    _child.Properties.update({_properties["attributes"][i]["name"]: _properties["attributes"][i]["Default"]})
+                    control.configure({_properties["attributes"][i]["name"]: _properties["attributes"][i]["Default"]})
                 else:
-                    _child.Properties.update({_properties["Attributes"][i]["Name"]: ""})
+                    _child.Properties.update({_properties["attributes"][i]["name"]: ""})
             except Exception as ex:
                 print("Unable to set property:")
-                print(_child.Library+"."+_child.Class+"."+_properties["Attributes"][i]["Name"])
+                print(_child.Library+"."+_child.Class+"."+_properties["attributes"][i]["name"])
                 print(ex.args)
 
         control.place(x=_left,y=_top,width=_width,height=_height)

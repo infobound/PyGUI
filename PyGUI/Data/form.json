@@ -1,123 +1,143 @@
 {
 	"Base": [
 		{
-			"Name": "Library",
-			"Type": "label",
-			"Default": "tkinter"
+			"library": {
+				"Type": "label",
+				"Default": "tkinter"
+			}
 		},
 		{
-			"Name": "Class",
-			"Type": "label",
-			"Default": "Tk"
+			"class": {
+				"Type": "label",
+				"Default": "Tk"
+			}
 		},
 		{
-			"Name": "Name",
-			"Type": "text",
-			"Default": "New_Form"
+			"name": {
+				"Type": "text",
+				"Default": "NewForm"
+			}
 		},
 		{
-			"Name": "Placement Mode",
-			"Type": "Select",
-			"Options": [
-				{
-					"Text": "Place",
-					"Value": "place"
-				},
-				{
-					"Text": "Pack",
-					"Value": "Pack"
-				},
-				{
-					"Text": "Grid",
-					"Value": "grid"
-				}
-			]
+			"Placement Mode": {
+				"Type": "Select",
+				"Options": [
+					{
+						"Text": "Place",
+						"Value": "place"
+					},
+					{
+						"Text": "Pack",
+						"Value": "Pack"
+					},
+					{
+						"Text": "Grid",
+						"Value": "grid"
+					}
+				],
+				"Default": "pack"
+			}
 		}
 	],
 	"Attributes": [
 		{
-			"Name": "activebackground",
-			"Type": "color",
-			"Description": "Background color when the button is under the cursor."
+			"activebackground": {
+				"Type": "color",
+				"Description": "Background color when the button is under the cursor."
+			}
 		},
 		{
-			"Name": "activeforeground",
-			"Type": "color",
-			"Description": "Foreground color when the button is under the cursor."
+			"activeforeground": {
+				"Type": "color",
+				"Description": "Foreground color when the button is under the cursor."
+			}
 		},
 		{
-			"Name": "highlightcolor",
-			"Type": "color",
-			"Description": "The color of the focus highlight when the widget has focus."
+			"highlightcolor": {
+				"Type": "color",
+				"Description": "The color of the focus highlight when the widget has focus."
+			}
 		},
 		{
-			"Name": "bd",
-			"Type": "int",
-			"Min": 0,
-			"Description": "Border width in pixels. Default is 2."
+			"bd": {
+				"Type": "int",
+				"Min": 0,
+				"Description": "Border width in pixels. Default is 2."
+			}
 		},
 		{
-			"Name": "command",
-			"Type": "text",
-			"Description": "Function or method to be called when the button is clicked."
+			"command": {
+				"Type": "text",
+				"Description": "Function or method to be called when the button is clicked."
+			}
 		},
 		{
-			"Name": "fg",
-			"Type": "color",
-			"Description": "Normal foreground (text) color."
+			"fg": {
+				"Type": "color",
+				"Description": "Normal foreground (text) color."
+			}
 		},
 		{
-			"Name": "font",
-			"Type": "font",
-			"Description": "Text font to be used for the button's label."
+			"font": {
+				"Type": "font",
+				"Description": "Text font to be used for the button's label."
+			}
 		},
 		{
-			"Name": "image",
-			"Type": "file",
-			"Description": "Image to be displayed."
+			"image": {
+				"Type": "file",
+				"Description": "Image to be displayed."
+			}
 		},
 		{
-			"Name": "padx",
-			"Type": "int",
-			"Min": 0,
-			"Description": "Additional padding left and right of the text."
+			"padx": {
+				"Type": "int",
+				"Min": 0,
+				"Description": "Additional padding left and right of the text."
+			}
 		},
 		{
-			"Name": "pady",
-			"Type": "int",
-			"Min": 0,
-			"Description": "Additional padding above and below the text."
+			"pady": {
+				"Type": "int",
+				"Min": 0,
+				"Description": "Additional padding above and below the text."
+			}
 		},
 		{
-			"Name": "text",
-			"Type": "text",
-			"Default": "New Form"
+			"text": {
+				"Type": "text",
+				"Default": "New Form"
+			}
 		}
 	],
 	"Geometry": [
 		{
-			"Name": "Top",
-			"Type": "int",
-			"Min": 0,
-			"Default": 0
+			"y": {
+				"Type": "int",
+				"Min": 0,
+				"Default": 0
+			}
 		},
 		{
-			"Name": "Left",
-			"Type": "int",
-			"Min": 0,
-			"Default": 0
+			"x": {
+				"Type": "int",
+				"Min": 0,
+				"Default": 0
+			}
 		},
 		{
-			"Name": "Height",
-			"Type": "int",
-			"Min": 50,
-			"Default": 500
+			"Height": {
+				"Type": "int",
+				"Min": 50,
+				"Default": 500
+			}
 		},
 		{
-			"Name": "Width",
-			"Type": "int",
-			"Min": 50,
-			"Default": 500
+			"Width": {
+				"Type": "int",
+				"Min": 50,
+				"Default": 500
+			}
 		}
 	]
 }
