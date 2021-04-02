@@ -369,15 +369,8 @@ def BuildForm(parentFrame,Form):
         for group,tools in TB._Tools["Toolbar"].items():
             for tool,settings in tools.items():
                 if TB._ToolSelected==tool:
-                    _properties=settings["Properties"]
+                    _properties=settings["properties"]
                     break
-
-
-        #for i in range(TB._Tools["Tools"].len()):
-        #    for j in range(len(TB._Tools["Tools"][i]["Buttons"])):
-        #        if TB._ToolSelected==TB._Tools["Tools"][i]["Buttons"][j]["name"]:
-        #            _properties=TB._Tools["Tools"][i]["Buttons"][j]["Properties"]
-        #            break
 
         print("to do - create control by library.class")
         if TB._ToolSelected=="Button":
@@ -393,21 +386,44 @@ def BuildForm(parentFrame,Form):
 
 
         _child=Child.Child()
-        _child.Library="tk"
+        _child.Library=_properties["base"]["library"]["default"]
         _child.Class=TB._ToolSelected
-        _child.Properties.update({"name": _properties["base"]["name"]})
+        _child.Properties.update({"library": _properties["base"]["library"]["default"]})
+        _child.Properties.update({"class": _properties["base"]["class"]["default"]})
 
-        for i in range(len(_properties["attributes"])):
+        nametestloop=0
+        nametest=_properties["base"]["name"]["default"]
+        while WidgetNameAlreadyExists(nametest)==True:
+            nametestloop+=1
+            nametest=_properties["base"]["name"]["default"]+str(nametestloop)
+
+        _child.Properties.update({"name": nametest})
+
+        for attrib, details in _properties["attributes"].items():
             try:
-                if "Default" in _properties["attributes"][i]:
-                    _child.Properties.update({_properties["attributes"][i]["name"]: _properties["attributes"][i]["Default"]})
-                    control.configure({_properties["attributes"][i]["name"]: _properties["attributes"][i]["Default"]})
+                if "default" in details:
+                    _child.Properties.update({attrib: details["default"]})
+                    control.configure({attrib: details["default"]})
                 else:
-                    _child.Properties.update({_properties["attributes"][i]["name"]: ""})
+                    _child.Properties.update({attrib: ""})
             except Exception as ex:
                 print("Unable to set property:")
-                print(_child.Library+"."+_child.Class+"."+_properties["attributes"][i]["name"])
+                print(_child.Library+"."+_child.Class+"."+attrib)
                 print(ex.args)
+
+
+
+        #for i in range(len(_properties["attributes"])):
+        #    try:
+        #        if "default" in _properties["attributes"][i]:
+        #            _child.Properties.update({_properties["attributes"][i]["name"]: _properties["attributes"][i]["default"]})
+        #            control.configure({_properties["attributes"][i]["name"]: _properties["attributes"][i]["default"]})
+        #        else:
+        #            _child.Properties.update({_properties["attributes"][i]["name"]: ""})
+        #    except Exception as ex:
+        #        print("Unable to set property:")
+        #        print(_child.Library+"."+_child.Class+"."+_properties["attributes"][i]["name"])
+        #        print(ex.args)
 
         control.place(x=_left,y=_top,width=_width,height=_height)
         
@@ -464,4 +480,9 @@ def BuildControls(parentFrame):
 
     return
 
+def WidgetNameAlreadyExists(name):
+    for child in _form.Children:
+        if name==child.Properties["name"]:
+            return True
 
+    return False

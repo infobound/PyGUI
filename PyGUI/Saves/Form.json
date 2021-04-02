@@ -1,1 +1,45 @@
-{ "Form": { "Properties": {"name": "Form", "width": 500, "height": 500, "left": 0, "top": 0, "text": "New Form", "drawmode": "Place"} ,"Children": [{ "library": "tk","class": "Button","Properties":{"name": "Button", "activebackground": "", "activeforeground": "", "highlightcolor": "", "bd": "", "command": "", "fg": "", "font": "", "image": "", "justify": "", "padx": "", "pady": "", "relief": "raised", "state": "normal", "text": "Button", "underline": "", "wraplength": "", "x": 121, "y": 81, "width": 60, "height": 30}},{ "library": "tk","class": "Button","Properties":{"name": "Button", "activebackground": "", "activeforeground": "", "highlightcolor": "", "bd": "", "command": "", "fg": "", "font": "", "image": "", "justify": "", "padx": "", "pady": "", "relief": "raised", "state": "normal", "text": "Button", "underline": "", "wraplength": "", "x": 209, "y": 84, "width": 60, "height": 30}},{ "library": "tk","class": "Label","Properties":{"name": "Labal", "activebackground": "", "activeforeground": "", "highlightcolor": "", "bd": "", "command": "", "fg": "", "font": "", "image": "", "justify": "", "padx": "", "pady": "", "relief": "flat", "state": "normal", "text": "Label", "underline": "", "wraplength": "", "x": 126, "y": 42, "width": 138, "height": 23}},{ "library": "tk","class": "Entry","Properties":{"name": "Entry", "activebackground": "", "activeforeground": "", "highlightcolor": "", "bd": "", "command": "", "fg": "", "font": "", "image": "", "justify": "", "padx": "", "pady": "", "relief": "sunken", "state": "normal", "text": "Entry", "underline": "", "wraplength": "", "x": 126, "y": 133, "width": 140, "height": 29}} ] } }
+{
+	"Form": {
+		"Properties": {
+			"name": "Form",
+			"width": 500,
+			"height": 500,
+			"left": 0,
+			"top": 0,
+			"text": "New Form",
+			"drawmode": "Place"
+		},
+		"Children": [
+			{
+				"library": "tkinter",
+				"class": "Button",
+				"Properties": {
+					"library": "tkinter",
+					"class": "Button",
+					"name": "button",
+					"activebackground": "#00ff00",
+					"activeforeground": "#804000",
+					"highlightcolor": "#ff0000",
+					"bd": "",
+					"bg": "#0000a0",
+					"command": "",
+					"fg": "#ffffff",
+					"font": "",
+					"image": "",
+					"justify": "",
+					"padx": "",
+					"pady": "",
+					"relief": "raised",
+					"state": "normal",
+					"text": "Button",
+					"underline": "",
+					"wraplength": "",
+					"x": 206,
+					"y": 161,
+					"width": 60,
+					"height": 30
+				}
+			}
+		]
+	}
+}

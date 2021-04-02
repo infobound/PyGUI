@@ -3,120 +3,120 @@
 		"tkinter": {
 			"Select": "",
 			"Button": {
-				"Properties": "button.json"
+				"properties": "button.json"
 			},
 			"Label": {
-				"Properties": "label.json"
+				"properties": "label.json"
 			},
 			"Entry": {
-				"Properties": "entry.json"
+				"properties": "entry.json"
 			},
 			"Frame": {
-				"Properties": "frame.json"
+				"properties": "frame.json"
 			},
 			"Canvas": {
-				"Properties": "canvas.json"
+				"properties": "canvas.json"
 			}
 		},
 		"Special": {
 			"Scrollable Frame": {
-				"Properties": {
-					"Base": {
+				"properties": {
+					"base": {
 						"library": {
-							"Type": "label",
-							"Default": "Special"
+							"type": "label",
+							"default": "Special"
 						},
 						"class": {
-							"Type": "label",
-							"Default": "Special"
+							"type": "label",
+							"default": "Special"
 						},
 						"name": {
-							"Type": "text",
-							"Default": "ScrollableFrame"
+							"type": "text",
+							"default": "ScrollableFrame"
 						},
-						"Placement Manager": {
-							"Type": "Select",
-							"Options": {
+						"placement manager": {
+							"type": "Select",
+							"options": {
 								"Place": "place",
 								"Pack": "pack",
 								"Grid": "grid"
 							},
-							"Default": "pack"
+							"default": "pack"
 						}
 					},
-					"Attributes": {
+					"attributes": {
 						"activebackground": {
-							"Type": "color",
-							"Description": "Background color when the button is under the cursor."
+							"type": "color",
+							"description": "Background color when the button is under the cursor."
 						},
 						"activeforeground": {
-							"Type": "color",
-							"Description": "Foreground color when the button is under the cursor."
+							"type": "color",
+							"description": "Foreground color when the button is under the cursor."
 						},
 						"highlightcolor": {
-							"Type": "color",
-							"Description": "The color of the focus highlight when the widget has focus."
+							"type": "color",
+							"description": "The color of the focus highlight when the widget has focus."
 						},
 						"bd": {
-							"Type": "int",
-							"Min": 0,
-							"Description": "Border width in pixels. Default is 2."
+							"type": "int",
+							"min": 0,
+							"description": "Border width in pixels. Default is 2."
 						},
 						"command": {
-							"Type": "text",
-							"Description": "Function or method to be called when the button is clicked."
+							"type": "text",
+							"description": "Function or method to be called when the button is clicked."
 						},
 						"fg": {
-							"Type": "color",
-							"Description": "Normal foreground (text) color."
+							"type": "color",
+							"description": "Normal foreground (text) color."
 						},
 						"font": {
-							"Type": "font",
-							"Description": "Text font to be used for the button's label."
+							"type": "font",
+							"description": "Text font to be used for the button's label."
 						},
 						"image": {
-							"Type": "file",
-							"Description": "Image to be displayed."
+							"type": "file",
+							"description": "Image to be displayed."
 						},
 						"padx": {
-							"Type": "int",
-							"Min": 0,
-							"Description": "Additional padding left and right of the text."
+							"type": "int",
+							"min": 0,
+							"description": "Additional padding left and right of the text."
 						},
 						"pady": {
-							"Type": "int",
-							"Min": 0,
-							"Description": "Additional padding above and below the text."
+							"type": "int",
+							"min": 0,
+							"description": "Additional padding above and below the text."
 						},
 						"text": {
-							"Type": "text",
-							"Default": "New Form"
+							"type": "text",
+							"default": "New Form"
 						}
 					},
-					"Geometry": {
+					"geometry": {
 						"y": {
-							"Type": "int",
-							"Min": 0,
-							"Default": 0
+							"type": "int",
+							"min": 0,
+							"default": 0
 						},
 						"x": {
-							"Type": "int",
-							"Min": 0,
-							"Default": 0
+							"type": "int",
+							"min": 0,
+							"default": 0
 						},
-						"Height": {
-							"Type": "int",
-							"Min": 50,
-							"Default": 500
+						"height": {
+							"type": "int",
+							"min": 50,
+							"default": 500
 						},
-						"Width": {
-							"Type": "int",
-							"Min": 50,
-							"Default": 500
+						"width": {
+							"type": "int",
+							"min": 50,
+							"default": 500
 						}
 					}
 				},
-				"Script": ""
+				"script": ""
 			}
 		}
 	}

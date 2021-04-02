@@ -24,7 +24,7 @@ def SaveForm():
         _json+=' ,'
         _json+='"Children": ['
         for child in _form.Children:
-            _json+='{ "library": "'+child.library+'",'
+            _json+='{ "library": "'+child.Library+'",'
             _json+='"class": "'+child.Class+'",'
             _json+='"Properties":'
             _json+=json.dumps(child.Properties)
@@ -110,7 +110,7 @@ def LoadControl(_child):
         control=Canvas(_designFrame)
 
     for key,val in _child.Properties.items():
-        if key!="x" and key!="y" and key!="width" and key!="height" and key!="name" and val!="":
+        if key!="x" and key!="y" and key!="width" and key!="height" and key!="name" and key!="library" and key!="class" and val!="":
             control.configure({key:val})
 
     _geo=[]

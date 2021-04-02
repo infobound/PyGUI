@@ -93,32 +93,9 @@ def BuildToolsList():
             btn.configure(width=20,height=1,text=tool)
             btn.pack(side="top",fill="x")
 
-            if "Properties" in settings:
-                if type(settings["Properties"]) is dict:
+            if "properties" in settings:
+                if type(settings["properties"]) is dict:
                     #nothing to do
                     break
-                elif settings["Properties"].lower().endswith(".json")==True:
-                    settings["Properties"]=io.LoadFile("Data\\"+settings["Properties"])
-
-    #lbl=Label(_ToolbarContainer)
-    #lbl.configure(relief="raised")
-    #lbl.configure(text="Toolbar",font="Arial 10 bold")
-    #lbl.pack(side="top",fill="x")
-    #for i in range(len(_Tools["Toolbar"])):
-    #    lbl=Label(_ToolbarContainer)
-    #    lbl.configure(relief="raised")
-    #    lbl.configure(text=_Tools["Toolbar"][i]["Group name"])
-    #    lbl.pack(side="top",fill="x")
-    #    for j in range(len(_Tools["Toolbar"][i]["Tools"])):
-    #        btn=Button(_ToolbarContainer)
-    #        btn.configure(relief="flat",background="white")
-    #        if _Tools["Toolbar"][i]["Tools"][j]["name"]=="Select": 
-    #            btn.configure(background="wheat3")
-    #            _ToolSelected="Select"
-    #        btn.bind("<ButtonPress>", ToolButton_MouseButtonPress)
-    #        btn.configure(width=20,height=1,text=_Tools["Toolbar"][i]["Tools"][j]["name"])
-    #        btn.pack(side="top",fill="x")
-
-    #        if "Properties" in _Tools["Toolbar"][i]["Tools"][j]:
-    #            if _Tools["Toolbar"][i]["Tools"][j]["Properties"].lower().endswith(".json")==True:
-    #                _Tools["Toolbar"][i]["Tools"][j]["Properties"]=io.LoadFile("Data\\"+_Tools["Toolbar"][i]["Tools"][j]["Properties"])
+                elif settings["properties"].lower().endswith(".json")==True:
+                    settings["properties"]=io.LoadFile("Data\\"+settings["properties"])

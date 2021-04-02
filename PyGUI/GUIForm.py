@@ -66,7 +66,7 @@ def BuildInterface(window):
 
     #design frame
     design=Frame(window)
-    design.configure(background="dim grey",relief="sunken",width=_windowWidth-150-200,padx=5,pady=5)
+    design.configure(background="dim grey",relief="sunken",width=_windowWidth-250-200,padx=5,pady=5)
     design.pack(side="left", fill="both")
     _designFrame=GUICode.BuildForm(design,_form)
     IO.Init(_form,_designFrame)
@@ -90,7 +90,7 @@ def BuildInterface(window):
     propertiesCanvas.config(yscrollcommand=propertiesFrameScrollbar.set)
 
     properties.configure(relief="raised")
-    propertiesCanvas.configure(width=150)
+    propertiesCanvas.configure(width=250)
     
     properties.pack(side="left", fill="both")
     propertiesCanvas.pack(side="left", fill="y")

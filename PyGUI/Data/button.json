@@ -1,154 +1,147 @@
 {
 	"base": {
-			"library": "tk",
-			"class": "Button",
-			"name": "Button"
+		"library": {
+			"default": "tkinter",
+			"type": "label"
 		},
-	"attributes": [
-		{
-			"name": "activebackground",
-			"Type": "color",
-			"Description": "Background color when the button is under the cursor."
+		"class": {
+			"default": "Button",
+			"type": "label"
 		},
-		{
-			"name": "activeforeground",
-			"Type": "color",
-			"Description": "Foreground color when the button is under the cursor."
+		"name": {
+			"default": "button",
+			"type": "text"
+		}
+	},
+	"attributes": {
+		"activebackground": {
+			"type": "color",
+			"description": "Background color when the button is under the cursor."
 		},
-		{
-			"name": "highlightcolor",
-			"Type": "color",
-			"Description": "The color of the focus highlight when the widget has focus."
+		"activeforeground": {
+			"type": "color",
+			"description": "Foreground color when the button is under the cursor."
 		},
-		{
-			"name": "bd",
-			"Type": "int",
-			"Min": 0,
-			"Description": "Border width in pixels. Default is 2."
+		"highlightcolor": {
+			"type": "color",
+			"description": "The color of the focus highlight when the widget has focus."
 		},
-		{
-			"name": "command",
-			"Type": "text",
-			"Description": "Function or method to be called when the button is clicked."
+		"bd": {
+			"type": "int",
+			"min": 0,
+			"description": "Border width in pixels. Default is 2."
 		},
-		{
-			"name": "fg",
-			"Type": "color",
-			"Description": "Normal foreground (text) color."
+		"bg": {
+			"type": "color",
+			"description": ""
 		},
-		{
-			"name": "font",
-			"Type": "font",
-			"Description": "Text font to be used for the button's label."
+		"command": {
+			"type": "text",
+			"description": "Function or method to be called when the button is clicked."
 		},
-		{
-			"name": "image",
-			"Type": "file",
-			"Description": "Image to be displayed on the button (instead of text)."
+		"fg": {
+			"type": "color",
+			"description": "Normal foreground (text) color."
 		},
-		{
-			"name": "justify",
-			"Type": "file",
-			"Description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
+		"font": {
+			"type": "font",
+			"description": "Text font to be used for the button's label."
 		},
-		{
-			"name": "padx",
-			"Type": "int",
-			"Min": 0,
-			"Description": "Additional padding left and right of the text."
+		"image": {
+			"type": "file",
+			"description": "Image to be displayed on the button (instead of text)."
 		},
-		{
-			"name": "pady",
-			"Type": "int",
-			"Min": 0,
-			"Description": "Additional padding above and below the text."
+		"justify": {
+			"type": "file",
+			"description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
 		},
-		{
-			"name": "relief",
-			"Type": "select",
-			"Description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
-			"Default": "raised",
-			"Options": [
+		"padx": {
+			"type": "int",
+			"min": 0,
+			"description": "Additional padding left and right of the text."
+		},
+		"pady": {
+			"type": "int",
+			"min": 0,
+			"description": "Additional padding above and below the text."
+		},
+		"relief": {
+			"type": "select",
+			"description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
+			"default": "raised",
+			"options": [
 				{
-					"Text": "Sunken",
-					"Value": "sunken"
+					"text": "Sunken",
+					"value": "sunken"
 				},
 				{
-					"Text": "Raised",
-					"Value": "raised"
+					"text": "Raised",
+					"value": "raised"
 				},
 				{
-					"Text": "Flat",
-					"Value": "flat"
+					"text": "Flat",
+					"value": "flat"
 				},
 				{
-					"Text": "Groove",
-					"Value": "groove"
+					"text": "Groove",
+					"value": "groove"
 				},
 				{
-					"Text": "Ridge",
-					"Value": "ridge"
+					"text": "Ridge",
+					"value": "ridge"
 				}
 			]
 		},
-		{
-			"name": "state",
-			"Type": "select",
-			"Description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
-			"Default": "normal",
-			"Options": [
+		"state": {
+			"type": "select",
+			"description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
+			"default": "normal",
+			"options": [
 				{
-					"Text": "Normal",
-					"Value": "normal"
+					"text": "Normal",
+					"value": "normal"
 				},
 				{
-					"Text": "Active",
-					"Value": "active"
+					"text": "Active",
+					"value": "active"
 				},
 				{
-					"Text": "Disabled",
-					"Value": "disabled"
+					"text": "Disabled",
+					"value": "disabled"
 				}
 			]
 		},
-		{
-			"name": "text",
-			"Type": "text",
-			"Default": "Button"
+		"text": {
+			"type": "text",
+			"default": "Button"
 		},
-		{
-			"name": "underline",
-			"Type": "int",
-			"Min": -1,
-			"Description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
+		"underline": {
+			"type": "int",
+			"min": -1,
+			"description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
 		},
-		{
-			"name": "wraplength",
-			"Type": "int",
-			"Min": 0,
-			"Description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
+		"wraplength": {
+			"type": "int",
+			"min": 0,
+			"description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
 		}
-	],
-	"geometry": [
-		{
-			"name": "y",
-			"Type": "int",
-			"Min": 0
+	},
+	"geometry": {
+		"y": {
+			"type": "int",
+			"min": 0
 		},
-		{
-			"name": "x",
-			"Type": "int",
-			"Min": 0
+		"x": {
+			"type": "int",
+			"min": 0
 		},
-		{
-			"name": "height",
-			"Type": "int",
-			"Min": 5
+		"height": {
+			"type": "int",
+			"min": 5
 		},
-		{
-			"name": "width",
-			"Type": "int",
-			"Min": 5
+		"width": {
+			"type": "int",
+			"min": 5
 		}
-	]
+	}
 }
