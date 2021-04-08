@@ -1,7 +1,7 @@
 {
 	"base": {
 		"library": {
-			"default": "tk",
+			"default": "tkinter",
 			"type": "label"
 		},
 		"class": {
@@ -14,52 +14,124 @@
 		}
 	},
 	"attributes": {
-		"activebackground": {
-			"type": "color",
-			"description": "Background color when the button is under the cursor."
-		},
-		"activeforeground": {
-			"type": "color",
-			"description": "Foreground color when the button is under the cursor."
-		},
-		"highlightcolor": {
-			"type": "color",
-			"description": "The color of the focus highlight when the widget has focus."
-		},
 		"bd": {
 			"type": "int",
 			"min": 0,
 			"description": "Border width in pixels. Default is 2."
 		},
-		"command": {
-			"type": "text",
-			"description": "Function or method to be called when the button is clicked."
-		},
-		"fg": {
+		"bg": {
 			"type": "color",
-			"description": "Normal foreground (text) color."
+			"description": ""
 		},
-		"font": {
-			"type": "font",
-			"description": "Text font to be used for the button's label."
+		"confine": {
+			"type": "select",
+			"description": "If true (the default), the canvas cannot be scrolled outside of the scrollregion.",
+			"default": "True",
+			"options": [
+				{
+					"text": "True",
+					"value": "True"
+				},
+				{
+					"text": "False",
+					"value": "False"
+				}
+			]
 		},
-		"image": {
-			"type": "file",
-			"description": "Image to be displayed on the button (instead of text)."
+		"cursur": {
+			"type": "select",
+			"description": "Cursor used in the canvas like arrow, circle, dot etc.",
+			"default": "arrow",
+			"options": [
+				{
+					"text": "arrow",
+					"value": "arrow"
+				},
+				{
+					"text": "circle",
+					"value": "circle"
+				},
+				{
+					"text": "clock",
+					"value": "clock"
+				},
+				{
+					"text": "cross",
+					"value": "cross"
+				},
+				{
+					"text": "dotbox",
+					"value": "dotbox"
+				},
+				{
+					"text": "exchange",
+					"value": "exchange"
+				},
+				{
+					"text": "fleur",
+					"value": "fleur"
+				},
+				{
+					"text": "heart",
+					"value": "heart"
+				},
+				{
+					"text": "man",
+					"value": "man"
+				},
+				{
+					"text": "mouse",
+					"value": "mouse"
+				},
+				{
+					"text": "pirate",
+					"value": "pirate"
+				},
+				{
+					"text": "plus",
+					"value": "plus"
+				},
+				{
+					"text": "shuttle",
+					"value": "shuttle"
+				},
+				{
+					"text": "sizing",
+					"value": "sizing"
+				},
+				{
+					"text": "spider",
+					"value": "spider"
+				},
+				{
+					"text": "spraycan",
+					"value": "spraycan"
+				},
+				{
+					"text": "star",
+					"value": "star"
+				},
+				{
+					"text": "target",
+					"value": "target"
+				},
+				{
+					"text": "tcross",
+					"value": "tcross"
+				},
+				{
+					"text": "trek",
+					"value": "trek"
+				},
+				{
+					"text": "watch",
+					"value": "watch"
+				}
+			]
 		},
-		"justify": {
-			"type": "file",
-			"description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
-		},
-		"padx": {
-			"type": "int",
-			"min": 0,
-			"description": "Additional padding left and right of the text."
-		},
-		"pady": {
-			"type": "int",
-			"min": 0,
-			"description": "Additional padding above and below the text."
+		"highlightcolor": {
+			"type": "color",
+			"description": "The color of the focus highlight when the widget has focus."
 		},
 		"relief": {
 			"type": "select",
@@ -88,38 +160,27 @@
 				}
 			]
 		},
-		"state": {
-			"type": "select",
-			"description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
-			"default": "normal",
-			"options": [
-				{
-					"text": "Normal",
-					"value": "normal"
-				},
-				{
-					"text": "Active",
-					"value": "active"
-				},
-				{
-					"text": "Disabled",
-					"value": "disabled"
-				}
-			]
-		},
-		"text": {
+		"scrollregion": {
 			"type": "text",
-			"default": "Button"
+			"description": "A tuple (w, n, e, s) that defines over how large an area the canvas can be scrolled, where w is the left side, n the top, e the right side, and s the bottom."
 		},
-		"underline": {
-			"type": "int",
-			"min": -1,
-			"description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
-		},
-		"wraplength": {
+		"xscrollincrement": {
 			"type": "int",
 			"min": 0,
-			"description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
+			"description": "If you set this option to some positive dimension, the canvas can be positioned only on multiples of that distance, and the value will be used for scrolling by scrolling units, such as when the user clicks on the arrows at the ends of a scrollbar."
+		},
+		"xscrollcommand": {
+			"type": "text",
+			"description": "If the canvas is scrollable, this attribute should be the .set() method of the horizontal scrollbar."
+		},
+		"yscrollincrement": {
+			"type": "int",
+			"min": 0,
+			"description": "If you set this option to some positive dimension, the canvas can be positioned only on multiples of that distance, and the value will be used for scrolling by scrolling units, such as when the user clicks on the arrows at the ends of a scrollbar."
+		},
+		"yscrollcommand": {
+			"type": "text",
+			"description": "If the canvas is scrollable, this attribute should be the .set() method of the horizontal scrollbar."
 		}
 	},
 	"geometry": {

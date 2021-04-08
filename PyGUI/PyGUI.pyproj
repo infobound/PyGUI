@@ -44,6 +44,7 @@
     <Compile Include="PyGUI.pyw" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\checkbutton.json" />
     <Content Include="Data\canvas.json" />
     <Content Include="Data\entry.json" />
     <Content Include="Data\form.json" />

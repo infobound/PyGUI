@@ -5,11 +5,11 @@
 			"type": "label"
 		},
 		"class": {
-			"default": "Button",
+			"default": "Checkbutton",
 			"type": "label"
 		},
 		"name": {
-			"default": "button",
+			"default": "checkbutton",
 			"type": "text"
 		}
 	},
@@ -31,9 +31,104 @@
 			"type": "color",
 			"description": ""
 		},
+		"bitmap": {
+			"type": "file",
+			"description": "Image to be displayed on the button (instead of text)."
+		},
 		"command": {
 			"type": "text",
 			"description": "Function or method to be called when the button is clicked."
+		},
+		"cursur": {
+			"type": "select",
+			"description": "Cursor used in the canvas like arrow, circle, dot etc.",
+			"default": "arrow",
+			"options": [
+				{
+					"text": "arrow",
+					"value": "arrow"
+				},
+				{
+					"text": "circle",
+					"value": "circle"
+				},
+				{
+					"text": "clock",
+					"value": "clock"
+				},
+				{
+					"text": "cross",
+					"value": "cross"
+				},
+				{
+					"text": "dotbox",
+					"value": "dotbox"
+				},
+				{
+					"text": "exchange",
+					"value": "exchange"
+				},
+				{
+					"text": "fleur",
+					"value": "fleur"
+				},
+				{
+					"text": "heart",
+					"value": "heart"
+				},
+				{
+					"text": "man",
+					"value": "man"
+				},
+				{
+					"text": "mouse",
+					"value": "mouse"
+				},
+				{
+					"text": "pirate",
+					"value": "pirate"
+				},
+				{
+					"text": "plus",
+					"value": "plus"
+				},
+				{
+					"text": "shuttle",
+					"value": "shuttle"
+				},
+				{
+					"text": "sizing",
+					"value": "sizing"
+				},
+				{
+					"text": "spider",
+					"value": "spider"
+				},
+				{
+					"text": "spraycan",
+					"value": "spraycan"
+				},
+				{
+					"text": "star",
+					"value": "star"
+				},
+				{
+					"text": "target",
+					"value": "target"
+				},
+				{
+					"text": "tcross",
+					"value": "tcross"
+				},
+				{
+					"text": "trek",
+					"value": "trek"
+				},
+				{
+					"text": "watch",
+					"value": "watch"
+				}
+			]
 		},
 		"fg": {
 			"type": "color",

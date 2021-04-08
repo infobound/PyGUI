@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import filedialog as fd
+from PIL import ImageTk ,Image
 import json
 import Form
 import Child
@@ -157,3 +158,25 @@ def LoadFile(FilePath):
         return
 
     return formatteddata
+
+def LoadImage():
+    filetypes = (
+        ('Supportted image files', '*.jpg,*.bmp'),
+        ('All files', '*.*')
+    )
+
+    filename = fd.askopenfilename(
+        title='Open a file',
+        filetypes=filetypes)
+    if filename=="": 
+        filename="cancel"
+        return filename
+
+    try:
+        img=ImageTk.PhotoImage(Image.open(filename))
+        img=None
+    except Exception as e:
+        print(e)
+        return ""
+
+    return filename

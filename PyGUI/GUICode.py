@@ -94,7 +94,14 @@ def BuildForm(parentFrame,Form):
         global _SelectionGrips
 
         for _widget in _selected:
-            _widget.configure(cursor="arrow")
+            try:
+                _widget.configure(cursor="arrow")
+            except Exception as e:
+                #why does this happen????
+                #only after i select an image for a button, so far.
+                print("reset selection - unable to set cursor to arrow")
+                print("to do - fix reset selection cursor change")
+
             _widget.unbind("<ButtonPress>")
             _widget.unbind("<ButtonRelease>")
             _widget.unbind("<B1-Motion>")

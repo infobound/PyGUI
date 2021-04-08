@@ -2,9 +2,11 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from tkinter.colorchooser import askcolor
+from PIL import ImageTk ,Image
 
 import GUICode_Toolbar as TB
 import GUICode as GC
+import GUICode_IO as IO
 
 global _propertiesFrame
 global _props
@@ -35,11 +37,14 @@ def BuildPropertyValueField(propFrame,formChild,propName,propType):
         print("to do - font property pick")
         if formChild.Properties[propName]!="":
             widget.configure(text=formChild.Properties[propName])
+        else:
+            widget.configure(text="Choose font...")
     elif propType=="color":
         widget=Button(propFrame)
-        print("to do - color property pick")
         if formChild.Properties[propName]!="":
             widget.configure(bg=formChild.Properties[propName], text=formChild.Properties[propName])
+        else:
+            widget.configure(text="Choose color...")
         widget.configure(command=lambda: UpdateColorProperty(widget,propName))
     elif propType=="file":
         widget=Button(propFrame)
@@ -47,7 +52,8 @@ def BuildPropertyValueField(propFrame,formChild,propName,propType):
         if formChild.Properties[propName]!="":
             widget.configure(text=formChild.Properties[propName])
         else:
-            widget.configure(text="Choose File...")
+            widget.configure(text="Choose file...")
+        widget.configure(command=lambda: UpdateFileProperty(widget,propName))
     elif propType=="int":
         widget=Entry(propFrame)
         sv=StringVar()
@@ -60,10 +66,11 @@ def BuildPropertyValueField(propFrame,formChild,propName,propType):
         _toolPropOptions=TB._Tools["Toolbar"][formChild.Properties["library"]][formChild.Properties["class"]]["properties"]["attributes"][propName]["options"]
         vlist = []
         for option in _toolPropOptions:
-            vlist.append(option["text"])
+            vlist.append(option["value"])
 
         widget = ttk.Combobox(propFrame, values = vlist,state="readonly")
         widget.set(formChild.Properties[propName])
+        widget.bind("<<ComboboxSelected>>",lambda event,args=propName: UpdateSelectProperty(event,args))
     else:
         widget=Label(propFrame)
         widget.configure(text=formChild.Properties[propName])
@@ -203,8 +210,27 @@ def UpdateTextProperty(event,args):
     _SelectedWidget.Properties[args]=event.widget.get()
     _SelectedWidget.Widget.configure({args: event.widget.get()})
 
-def UpdateFileProperty():
-    return
+def UpdateFileProperty(widget,property):
+    global _SelectedWidget
+
+    if property=="image":
+        filename=IO.LoadImage()
+        
+        if filename=="":
+            msg=messagebox.showerror(title="Image Load Fail", message="Unable to load image file.")
+        elif filename=="cancel":
+            return
+        else:
+            img=ImageTk.PhotoImage(Image.open(filename))
+            _SelectedWidget.Properties["image"]=filename
+            _SelectedWidget.Widget.configure(image=img)
+
+            btntxt=filename.split("/")[len(filename.split("/"))-1]
+            widget.configure(text=btntxt)
+    else:
+        #not sure if anything will ever go here
+        return
+
 
 def UpdateColorProperty(widget,property):
     global _SelectedWidget
@@ -241,5 +267,7 @@ def is_number(s):
     except ValueError:
         return False
 
-def UpdateSelectProperty(event,args):
-    return
+def UpdateSelectProperty(event,property):
+    global _SelectedWidget
+    _SelectedWidget.Properties[property]=event.widget.get()
+    _SelectedWidget.Widget.configure({property: event.widget.get()})
