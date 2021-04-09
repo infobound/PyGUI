@@ -1,7 +1,7 @@
 {
 	"base": {
 		"library": {
-			"default": "tk",
+			"default": "tkinter",
 			"type": "label"
 		},
 		"class": {
@@ -14,57 +14,122 @@
 		}
 	},
 	"attributes": {
-		"activebackground": {
-			"type": "color",
-			"description": "Background color when the button is under the cursor."
-		},
-		"activeforeground": {
-			"type": "color",
-			"description": "Foreground color when the button is under the cursor."
-		},
-		"highlightcolor": {
-			"type": "color",
-			"description": "The color of the focus highlight when the widget has focus."
-		},
 		"bd": {
 			"type": "int",
 			"min": 0,
 			"description": "Border width in pixels. Default is 2."
 		},
-		"command": {
-			"type": "text",
-			"description": "Function or method to be called when the button is clicked."
-		},
-		"fg": {
+		"bg": {
 			"type": "color",
-			"description": "Normal foreground (text) color."
+			"description": ""
 		},
-		"font": {
-			"type": "font",
-			"description": "Text font to be used for the button's label."
+		"cursur": {
+			"type": "select",
+			"description": "Cursor used in the canvas like arrow, circle, dot etc.",
+			"default": "arrow",
+			"options": [
+				{
+					"text": "arrow",
+					"value": "arrow"
+				},
+				{
+					"text": "circle",
+					"value": "circle"
+				},
+				{
+					"text": "clock",
+					"value": "clock"
+				},
+				{
+					"text": "cross",
+					"value": "cross"
+				},
+				{
+					"text": "dotbox",
+					"value": "dotbox"
+				},
+				{
+					"text": "exchange",
+					"value": "exchange"
+				},
+				{
+					"text": "fleur",
+					"value": "fleur"
+				},
+				{
+					"text": "heart",
+					"value": "heart"
+				},
+				{
+					"text": "man",
+					"value": "man"
+				},
+				{
+					"text": "mouse",
+					"value": "mouse"
+				},
+				{
+					"text": "pirate",
+					"value": "pirate"
+				},
+				{
+					"text": "plus",
+					"value": "plus"
+				},
+				{
+					"text": "shuttle",
+					"value": "shuttle"
+				},
+				{
+					"text": "sizing",
+					"value": "sizing"
+				},
+				{
+					"text": "spider",
+					"value": "spider"
+				},
+				{
+					"text": "spraycan",
+					"value": "spraycan"
+				},
+				{
+					"text": "star",
+					"value": "star"
+				},
+				{
+					"text": "target",
+					"value": "target"
+				},
+				{
+					"text": "tcross",
+					"value": "tcross"
+				},
+				{
+					"text": "trek",
+					"value": "trek"
+				},
+				{
+					"text": "watch",
+					"value": "watch"
+				}
+			]
 		},
-		"image": {
-			"type": "file",
-			"description": "Image to be displayed on the button (instead of text)."
+		"highlightbackground": {
+			"type": "color",
+			"description": "Color of the focus highlight when the frame does not have focus."
 		},
-		"justify": {
-			"type": "file",
-			"description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
+		"highlightcolor": {
+			"type": "color",
+			"description": "The color of the focus highlight when the widget has focus."
 		},
-		"padx": {
+		"highlightthickness": {
 			"type": "int",
-			"min": 0,
-			"description": "Additional padding left and right of the text."
-		},
-		"pady": {
-			"type": "int",
-			"min": 0,
-			"description": "Additional padding above and below the text."
+			"description": "Thickness of the focus highlight."
 		},
 		"relief": {
 			"type": "select",
 			"description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
-			"default": "raised",
+			"default": "flat",
 			"options": [
 				{
 					"text": "Sunken",
@@ -87,39 +152,6 @@
 					"value": "ridge"
 				}
 			]
-		},
-		"state": {
-			"type": "select",
-			"description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
-			"default": "normal",
-			"options": [
-				{
-					"text": "Normal",
-					"value": "normal"
-				},
-				{
-					"text": "Active",
-					"value": "active"
-				},
-				{
-					"text": "Disabled",
-					"value": "disabled"
-				}
-			]
-		},
-		"text": {
-			"type": "text",
-			"default": "Button"
-		},
-		"underline": {
-			"type": "int",
-			"min": -1,
-			"description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
-		},
-		"wraplength": {
-			"type": "int",
-			"min": 0,
-			"description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
 		}
 	},
 	"geometry": {

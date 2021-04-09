@@ -5,34 +5,15 @@
 			"type": "label"
 		},
 		"class": {
-			"default": "Label",
+			"default": "Listbox",
 			"type": "label"
 		},
 		"name": {
-			"default": "label",
+			"default": "listbox",
 			"type": "text"
 		}
 	},
 	"attributes": {
-		"anchor": {
-			"type": "select",
-			"description": "This options controls where the text is positioned if the widget has more space than the text needs. The default is anchor=CENTER, which centers the text in the available space.",
-			"default": "center",
-			"options": [
-				{
-					"text": "Left",
-					"value": "left"
-				},
-				{
-					"text": "Center",
-					"value": "center"
-				},
-				{
-					"text": "Right",
-					"value": "right"
-				}
-			]
-		},
 		"bd": {
 			"type": "int",
 			"min": 0,
@@ -41,10 +22,6 @@
 		"bg": {
 			"type": "color",
 			"description": ""
-		},
-		"bitmap": {
-			"type": "file",
-			"description": "Set this option equal to a bitmap or image object and the label will display that graphic."
 		},
 		"cursur": {
 			"type": "select",
@@ -145,38 +122,13 @@
 			"type": "font",
 			"description": "Text font to be used for the button's label."
 		},
-		"image": {
-			"type": "file",
-			"description": "Image to be displayed on the button (instead of text)."
+		"highlightcolor": {
+			"type": "color",
+			"description": "The color of the focus highlight when the widget has focus."
 		},
-		"justify": {
-			"type": "select",
-			"description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify.",
-			"default": "center",
-			"options": [
-				{
-					"text": "Left",
-					"value": "left"
-				},
-				{
-					"text": "Center",
-					"value": "center"
-				},
-				{
-					"text": "Right",
-					"value": "right"
-				}
-			]
-		},
-		"padx": {
+		"highlightthickness": {
 			"type": "int",
-			"min": 0,
-			"description": "Additional padding left and right of the text."
-		},
-		"pady": {
-			"type": "int",
-			"min": 0,
-			"description": "Additional padding above and below the text."
+			"description": "Thickness of the focus highlight."
 		},
 		"relief": {
 			"type": "select",
@@ -205,24 +157,40 @@
 				}
 			]
 		},
-		"text": {
+		"selectbackground": {
+			"type": "color",
+			"description": "The background color to use displaying selected text."
+		},
+		"selectmode": {
+			"type": "select",
+			"description": "Determines how many items can be selected, and how mouse drags affect the selection ?     BROWSE ? Normally, you can only select one line out of a listbox. If you click on an item and then drag to a different line, the selection will follow the mouse. This is the default.    SINGLE ? You can only select one line, and you can't drag the mouse.wherever you click button 1, that line is selected.    MULTIPLE ? You can select any number of lines at once. Clicking on any line toggles whether or not it is selected.    EXTENDED ? You can select any adjacent group of lines at once by clicking on the first line and dragging to the last line.",
+			"default": "browse",
+			"options": [
+				{
+					"text": "Browse",
+					"value": "browse"
+				},
+				{
+					"text": "Single",
+					"value": "single"
+				},
+				{
+					"text": "Multiple",
+					"value": "multiple"
+				},
+				{
+					"text": "Extended",
+					"value": "extended"
+				}
+			]
+		},
+		"xscrollcommand": {
 			"type": "text",
-			"default": "Button",
-			"description": "To display one or more lines of text in a label widget, set this option to a string containing the text. Internal newlines (\"\\n\") will force a line break."
+			"description": "If you want to allow the user to scroll the listbox horizontally, you can link your listbox widget to a horizontal scrollbar."
 		},
-		"textvariable": {
+		"yscrollcommand": {
 			"type": "text",
-			"description": "In order to be able to retrieve the current text from your entry widget, you must set this option to an instance of the StringVar class."
-		},
-		"underline": {
-			"type": "int",
-			"min": -1,
-			"description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
-		},
-		"wraplength": {
-			"type": "int",
-			"min": 0,
-			"description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
+			"description": "If you want to allow the user to scroll the listbox vertically, you can link your listbox widget to a vertical scrollbar."
 		}
 	},
 	"geometry": {

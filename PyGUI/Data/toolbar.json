@@ -5,6 +5,12 @@
 			"Button": {
 				"properties": "button.json"
 			},
+			"Checkbutton": {
+				"properties": "checkbutton.json"
+			},
+			"Radiobutton": {
+				"properties": "radiobutton.json"
+			},
 			"Label": {
 				"properties": "label.json"
 			},
@@ -13,6 +19,9 @@
 			},
 			"Frame": {
 				"properties": "frame.json"
+			},
+			"Listbox": {
+				"properties": "listbox.json"
 			},
 			"Canvas": {
 				"properties": "canvas.json"

@@ -1,7 +1,7 @@
 {
 	"base": {
 		"library": {
-			"default": "tk",
+			"default": "tkinter",
 			"type": "label"
 		},
 		"class": {
@@ -14,26 +14,113 @@
 		}
 	},
 	"attributes": {
-		"activebackground": {
-			"type": "color",
-			"description": "Background color when the button is under the cursor."
-		},
-		"activeforeground": {
-			"type": "color",
-			"description": "Foreground color when the button is under the cursor."
-		},
-		"highlightcolor": {
-			"type": "color",
-			"description": "The color of the focus highlight when the widget has focus."
-		},
 		"bd": {
 			"type": "int",
 			"min": 0,
 			"description": "Border width in pixels. Default is 2."
 		},
+		"bg": {
+			"type": "color",
+			"description": ""
+		},
 		"command": {
 			"type": "text",
 			"description": "Function or method to be called when the button is clicked."
+		},
+		"cursur": {
+			"type": "select",
+			"description": "Cursor used in the canvas like arrow, circle, dot etc.",
+			"default": "arrow",
+			"options": [
+				{
+					"text": "arrow",
+					"value": "arrow"
+				},
+				{
+					"text": "circle",
+					"value": "circle"
+				},
+				{
+					"text": "clock",
+					"value": "clock"
+				},
+				{
+					"text": "cross",
+					"value": "cross"
+				},
+				{
+					"text": "dotbox",
+					"value": "dotbox"
+				},
+				{
+					"text": "exchange",
+					"value": "exchange"
+				},
+				{
+					"text": "fleur",
+					"value": "fleur"
+				},
+				{
+					"text": "heart",
+					"value": "heart"
+				},
+				{
+					"text": "man",
+					"value": "man"
+				},
+				{
+					"text": "mouse",
+					"value": "mouse"
+				},
+				{
+					"text": "pirate",
+					"value": "pirate"
+				},
+				{
+					"text": "plus",
+					"value": "plus"
+				},
+				{
+					"text": "shuttle",
+					"value": "shuttle"
+				},
+				{
+					"text": "sizing",
+					"value": "sizing"
+				},
+				{
+					"text": "spider",
+					"value": "spider"
+				},
+				{
+					"text": "spraycan",
+					"value": "spraycan"
+				},
+				{
+					"text": "star",
+					"value": "star"
+				},
+				{
+					"text": "target",
+					"value": "target"
+				},
+				{
+					"text": "tcross",
+					"value": "tcross"
+				},
+				{
+					"text": "trek",
+					"value": "trek"
+				},
+				{
+					"text": "watch",
+					"value": "watch"
+				}
+			]
+		},
+		"exportselection": {
+			"type": "int",
+			"description": "By default, if you select text within an Entry widget, it is automatically exported to the clipboard. To avoid this exportation, use exportselection=0."
 		},
 		"fg": {
 			"type": "color",
@@ -43,28 +130,33 @@
 			"type": "font",
 			"description": "Text font to be used for the button's label."
 		},
-		"image": {
-			"type": "file",
-			"description": "Image to be displayed on the button (instead of text)."
+		"highlightcolor": {
+			"type": "color",
+			"description": "The color of the focus highlight when the widget has focus."
 		},
 		"justify": {
-			"type": "file",
-			"description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify."
-		},
-		"padx": {
-			"type": "int",
-			"min": 0,
-			"description": "Additional padding left and right of the text."
-		},
-		"pady": {
-			"type": "int",
-			"min": 0,
-			"description": "Additional padding above and below the text."
+			"type": "select",
+			"description": "How to show multiple text lines: LEFT to left-justify each line; CENTER to center them; or RIGHT to right-justify.",
+			"default": "center",
+			"options": [
+				{
+					"text": "Left",
+					"value": "left"
+				},
+				{
+					"text": "Center",
+					"value": "center"
+				},
+				{
+					"text": "Right",
+					"value": "right"
+				}
+			]
 		},
 		"relief": {
 			"type": "select",
 			"description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
-			"default": "sunken",
+			"default": "raised",
 			"options": [
 				{
 					"text": "Sunken",
@@ -88,6 +180,22 @@
 				}
 			]
 		},
+		"selectbackground": {
+			"type": "color",
+			"description": "The background color to use displaying selected text. "
+		},
+		"selectborderwidth": {
+			"type": "int",
+			"description": "The width of the border to use around selected text. The default is one pixel."
+		},
+		"selectforeground": {
+			"type": "color",
+			"description": "The foreground (text) color of selected text."
+		},
+		"show": {
+			"type": "text",
+			"description": "\"Normally, the characters that the user types appear in the entry. To make a .password. entry that echoes each character as an asterisk, set show=\"*\".\""
+		},
 		"state": {
 			"type": "select",
 			"description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
@@ -107,19 +215,13 @@
 				}
 			]
 		},
-		"text": {
+		"textvariable": {
 			"type": "text",
-			"default": ""
+			"description": "In order to be able to retrieve the current text from your entry widget, you must set this option to an instance of the StringVar class."
 		},
-		"underline": {
-			"type": "int",
-			"min": -1,
-			"description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
-		},
-		"wraplength": {
-			"type": "int",
-			"min": 0,
-			"description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
+		"xscrollcommand": {
+			"type": "text",
+			"description": "If you expect that users will often enter more text than the onscreen size of the widget, you can link your entry widget to a scrollbar."
 		}
 	},
 	"geometry": {

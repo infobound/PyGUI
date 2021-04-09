@@ -5,38 +5,65 @@
 			"type": "label"
 		},
 		"class": {
-			"default": "Label",
+			"default": "Radiobutton",
 			"type": "label"
 		},
 		"name": {
-			"default": "label",
+			"default": "radiobutton",
 			"type": "text"
 		}
 	},
 	"attributes": {
+		"activebackground": {
+			"type": "color",
+			"description": "Background color when the button is under the cursor."
+		},
+		"activeforeground": {
+			"type": "color",
+			"description": "Foreground color when the button is under the cursor."
+		},
 		"anchor": {
 			"type": "select",
 			"description": "This options controls where the text is positioned if the widget has more space than the text needs. The default is anchor=CENTER, which centers the text in the available space.",
 			"default": "center",
 			"options": [
 				{
-					"text": "Left",
-					"value": "left"
+					"text": "North",
+					"value": "n"
+				},
+				{
+					"text": "North East",
+					"value": "ne"
+				},
+				{
+					"text": "East",
+					"value": "e"
+				},
+				{
+					"text": "South East",
+					"value": "se"
+				},
+				{
+					"text": "South",
+					"value": "s"
+				},
+				{
+					"text": "South West",
+					"value": "sw"
+				},
+				{
+					"text": "West",
+					"value": "w"
+				},
+				{
+					"text": "North West",
+					"value": "nw"
 				},
 				{
 					"text": "Center",
 					"value": "center"
-				},
-				{
-					"text": "Right",
-					"value": "right"
 				}
 			]
-		},
-		"bd": {
-			"type": "int",
-			"min": 0,
-			"description": "Border width in pixels. Default is 2."
 		},
 		"bg": {
 			"type": "color",
@@ -44,7 +71,15 @@
 		},
 		"bitmap": {
 			"type": "file",
-			"description": "Set this option equal to a bitmap or image object and the label will display that graphic."
+			"description": "Image to be displayed on the button (instead of text)."
+		},
+		"borderwidth": {
+			"type": "int",
+			"description": "The size of the border around the indicator part itself. Default is 2 pixels."
+		},
+		"command": {
+			"type": "text",
+			"description": "Function or method to be called when the button is clicked."
 		},
 		"cursur": {
 			"type": "select",
@@ -145,6 +180,14 @@
 			"type": "font",
 			"description": "Text font to be used for the button's label."
 		},
+		"highlightbackground": {
+			"type": "color",
+			"description": "The color of the focus highlight when the radiobutton does not have focus."
+		},
+		"highlightcolor": {
+			"type": "color",
+			"description": "The color of the focus highlight when the widget has focus."
+		},
 		"image": {
 			"type": "file",
 			"description": "Image to be displayed on the button (instead of text)."
@@ -181,7 +224,7 @@
 		"relief": {
 			"type": "select",
 			"description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
-			"default": "raised",
+			"default": "flat",
 			"options": [
 				{
 					"text": "Sunken",
@@ -205,24 +248,58 @@
 				}
 			]
 		},
+		"selectcolor": {
+			"type": "color",
+			"description": "The color of the checkbutton when it is set. Default is selectcolor=red."
+		},
+		"selectimage": {
+			"type": "file",
+			"description": "If you set this option to an image, that image will appear in the checkbutton when it is set."
+		},
+		"state": {
+			"type": "select",
+			"description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
+			"default": "normal",
+			"options": [
+				{
+					"text": "Normal",
+					"value": "normal"
+				},
+				{
+					"text": "Active",
+					"value": "active"
+				},
+				{
+					"text": "Disabled",
+					"value": "disabled"
+				}
+			]
+		},
 		"text": {
 			"type": "text",
-			"default": "Button",
-			"description": "To display one or more lines of text in a label widget, set this option to a string containing the text. Internal newlines (\"\\n\") will force a line break."
+			"default": "Radiobutton"
 		},
 		"textvariable": {
 			"type": "text",
-			"description": "In order to be able to retrieve the current text from your entry widget, you must set this option to an instance of the StringVar class."
+			"description": "To slave the text displayed in a label widget to a control variable of class StringVar, set this option to that variable."
 		},
 		"underline": {
 			"type": "int",
 			"min": -1,
 			"description": "Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined."
 		},
+		"value": {
+			"type": "text",
+			"description": "When a radiobutton is turned on by the user, its control variable is set to its current value option. If the control variable is an IntVar, give each radiobutton in the group a different integer value option. If the control variable is a StringVar, give each radiobutton a different string value option."
+		},
+		"variable": {
+			"type": "text",
+			"description": "The control variable that this radiobutton shares with the other radiobuttons in the group. This can be either an IntVar or a StringVar."
+		},
 		"wraplength": {
 			"type": "int",
 			"min": 0,
-			"description": "If this value is set to a positive number, the text lines will be wrapped to fit within this length."
+			"description": "You can limit the number of characters in each line by setting this option to the desired number. The default value, 0, means that lines will be broken only at newlines."
 		}
 	},
 	"geometry": {

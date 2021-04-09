@@ -51,6 +51,8 @@
     <Content Include="Data\frame.json" />
     <Content Include="Data\label.json" />
     <Content Include="Data\button.json" />
+    <Content Include="Data\listbox.json" />
+    <Content Include="Data\radiobutton.json" />
     <Content Include="Data\toolbar.json" />
     <Content Include="Images\Icon.bmp" />
     <Content Include="Images\Icon.ico" />

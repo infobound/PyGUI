@@ -174,11 +174,17 @@ def BuildForm(parentFrame,Form):
         global _MouseEndingX
         global _MouseEndingY
         global _Selected
+        global _form
 
         _MouseEndingX=event.x
         _MouseEndingY=event.y
 
-        print("to do - record move to form class")
+        for _widget in _selected:
+            for _child in _form.Children:
+                if _child.Widget==_widget:
+                    _child.Properties["x"]=_widget.winfo_x()
+                    _child.Properties["y"]=_widget.winfo_y()
+                    PROP.ShowWidgetProperties(_child)
 
     def Selected_MouseMove(event):
         global _MouseStartingX
@@ -208,11 +214,19 @@ def BuildForm(parentFrame,Form):
         global _MouseEndingX
         global _MouseEndingY
         global _Selected
+        global _form
 
         _MouseEndingX=event.x
         _MouseEndingY=event.y
 
-        print("to do - record resize to form class")
+        for _widget in _selected:
+            for _child in _form.Children:
+                if _child.Widget==_widget:
+                    _child.Properties["x"]=_widget.winfo_x()
+                    _child.Properties["y"]=_widget.winfo_y()
+                    _child.Properties["width"]=_widget.winfo_width()
+                    _child.Properties["height"]=_widget.winfo_height()
+                    PROP.ShowWidgetProperties(_child)
         
     def Resizer_MouseMove(event):
         global _MouseStartingX
@@ -390,7 +404,12 @@ def BuildForm(parentFrame,Form):
             control=Frame(designFormContainer)
         elif TB._ToolSelected=="Canvas":
             control=Canvas(designFormContainer)
-
+        elif TB._ToolSelected=="Checkbutton":
+            control=Checkbutton(designFormContainer)
+        elif TB._ToolSelected=="Radiobutton":
+            control=Radiobutton(designFormContainer)
+        elif TB._ToolSelected=="Listbox":
+            control=Listbox(designFormContainer)
 
         _child=Child.Child()
         _child.Library=_properties["base"]["library"]["default"]

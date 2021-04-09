@@ -130,6 +130,10 @@
 				}
 			]
 		},
+		"disabledforeground": {
+			"type": "color",
+			"description": "The foreground color used to render the text of a disabled checkbutton. The default is a stippled version of the default foreground color."
+		},
 		"fg": {
 			"type": "color",
 			"description": "Normal foreground (text) color."
@@ -165,6 +169,12 @@
 				}
 			]
 		},
+		"offvalue": {
+			"type": "text"
+		},
+		"onvalue": {
+			"type": "text"
+		},
 		"padx": {
 			"type": "int",
 			"min": 0,
@@ -178,7 +188,7 @@
 		"relief": {
 			"type": "select",
 			"description": "Relief specifies the type of the border. Some of the values are SUNKEN, RAISED, GROOVE, and RIDGE.",
-			"default": "raised",
+			"default": "flat",
 			"options": [
 				{
 					"text": "Sunken",
@@ -202,6 +212,14 @@
 				}
 			]
 		},
+		"selectcolor": {
+			"type": "color",
+			"description": "The color of the checkbutton when it is set. Default is selectcolor=red."
+		},
+		"selectimage": {
+			"type": "file",
+			"description": "If you set this option to an image, that image will appear in the checkbutton when it is set."
+		},
 		"state": {
 			"type": "select",
 			"description": "Set this option to DISABLED to gray out the button and make it unresponsive. Has the value ACTIVE when the mouse is over it. Default is NORMAL.",
@@ -223,7 +241,7 @@
 		},
 		"text": {
 			"type": "text",
-			"default": "Button"
+			"default": "Checkbutton"
 		},
 		"underline": {
 			"type": "int",
